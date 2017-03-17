@@ -7,6 +7,7 @@
 //
 
 #import "RestaurantTableViewController.h"
+#import "RestaurantTableViewCell.h"
 
 @interface RestaurantTableViewController () {
 	NSArray *restaurantNames;
@@ -52,11 +53,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString *cellIdentifier = @"Cell";
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+	RestaurantTableViewCell *cell = (RestaurantTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-	cell.textLabel.text = restaurantNames[indexPath.row];
-	cell.imageView.image = [UIImage imageNamed:restaurantImages[indexPath.row]];
-    
+	cell.nameLabel.text = restaurantNames[indexPath.row];
+	cell.thumbnailImageView.image = [UIImage imageNamed:restaurantImages[indexPath.row]];
+
     return cell;
 }
 

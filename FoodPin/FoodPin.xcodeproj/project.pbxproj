@@ -13,6 +13,7 @@
 		0DD98A981E7C15F00030E698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD98A971E7C15F00030E698 /* Assets.xcassets */; };
 		0DD98A9B1E7C15F00030E698 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DD98A991E7C15F00030E698 /* LaunchScreen.storyboard */; };
 		0DD98AA41E7C17800030E698 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98AA31E7C17800030E698 /* RestaurantTableViewController.m */; };
+		0DE32E741E7C1F9400F99BF6 /* RestaurantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE32E731E7C1F9400F99BF6 /* RestaurantTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		0DD98A9C1E7C15F00030E698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DD98AA21E7C17800030E698 /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
 		0DD98AA31E7C17800030E698 /* RestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewController.m; sourceTree = "<group>"; };
+		0DE32E721E7C1F9400F99BF6 /* RestaurantTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewCell.h; sourceTree = "<group>"; };
+		0DE32E731E7C1F9400F99BF6 /* RestaurantTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 				0DD98A941E7C15F00030E698 /* Main.storyboard */,
 				0DD98AA21E7C17800030E698 /* RestaurantTableViewController.h */,
 				0DD98AA31E7C17800030E698 /* RestaurantTableViewController.m */,
+				0DE32E721E7C1F9400F99BF6 /* RestaurantTableViewCell.h */,
+				0DE32E731E7C1F9400F99BF6 /* RestaurantTableViewCell.m */,
 				0DD98A971E7C15F00030E698 /* Assets.xcassets */,
 				0DD98A991E7C15F00030E698 /* LaunchScreen.storyboard */,
 				0DD98A9C1E7C15F00030E698 /* Info.plist */,
@@ -150,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DE32E741E7C1F9400F99BF6 /* RestaurantTableViewCell.m in Sources */,
 				0DD98AA41E7C17800030E698 /* RestaurantTableViewController.m in Sources */,
 				0DD98A901E7C15EF0030E698 /* AppDelegate.m in Sources */,
 				0DD98A8D1E7C15EF0030E698 /* main.m in Sources */,
@@ -307,6 +313,7 @@
 				0DD98AA11E7C15F00030E698 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
