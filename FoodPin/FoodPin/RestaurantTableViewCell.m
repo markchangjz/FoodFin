@@ -13,6 +13,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+
+	// 圓角處理
+	self.thumbnailImageView.layer.cornerRadius = 30.0;
+	self.thumbnailImageView.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
