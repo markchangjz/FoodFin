@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		0DD98A8D1E7C15EF0030E698 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98A8C1E7C15EF0030E698 /* main.m */; };
 		0DD98A901E7C15EF0030E698 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98A8F1E7C15EF0030E698 /* AppDelegate.m */; };
-		0DD98A931E7C15EF0030E698 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98A921E7C15EF0030E698 /* ViewController.m */; };
 		0DD98A961E7C15F00030E698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DD98A941E7C15F00030E698 /* Main.storyboard */; };
 		0DD98A981E7C15F00030E698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD98A971E7C15F00030E698 /* Assets.xcassets */; };
 		0DD98A9B1E7C15F00030E698 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DD98A991E7C15F00030E698 /* LaunchScreen.storyboard */; };
+		0DD98AA41E7C17800030E698 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98AA31E7C17800030E698 /* RestaurantTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +20,12 @@
 		0DD98A8C1E7C15EF0030E698 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0DD98A8E1E7C15EF0030E698 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0DD98A8F1E7C15EF0030E698 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0DD98A911E7C15EF0030E698 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0DD98A921E7C15EF0030E698 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0DD98A951E7C15F00030E698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0DD98A971E7C15F00030E698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DD98A9A1E7C15F00030E698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DD98A9C1E7C15F00030E698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0DD98AA21E7C17800030E698 /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
+		0DD98AA31E7C17800030E698 /* RestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +60,9 @@
 			children = (
 				0DD98A8E1E7C15EF0030E698 /* AppDelegate.h */,
 				0DD98A8F1E7C15EF0030E698 /* AppDelegate.m */,
-				0DD98A911E7C15EF0030E698 /* ViewController.h */,
-				0DD98A921E7C15EF0030E698 /* ViewController.m */,
 				0DD98A941E7C15F00030E698 /* Main.storyboard */,
+				0DD98AA21E7C17800030E698 /* RestaurantTableViewController.h */,
+				0DD98AA31E7C17800030E698 /* RestaurantTableViewController.m */,
 				0DD98A971E7C15F00030E698 /* Assets.xcassets */,
 				0DD98A991E7C15F00030E698 /* LaunchScreen.storyboard */,
 				0DD98A9C1E7C15F00030E698 /* Info.plist */,
@@ -150,7 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DD98A931E7C15EF0030E698 /* ViewController.m in Sources */,
+				0DD98AA41E7C17800030E698 /* RestaurantTableViewController.m in Sources */,
 				0DD98A901E7C15EF0030E698 /* AppDelegate.m in Sources */,
 				0DD98A8D1E7C15EF0030E698 /* main.m in Sources */,
 			);

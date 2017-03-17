@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RestaurantTableViewController.h
 //  FoodPin
 //
 //  Created by MarkChang on 2017/3/17.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface RestaurantTableViewController : UITableViewController
 
 @end
-
