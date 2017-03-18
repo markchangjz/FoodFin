@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	self.restaurantImageView.image = [UIImage imageNamed:self.restaurantImage];
+	self.restaurantImageView.image = [UIImage imageNamed:self.restaurant.image];
 	self.restaurantImageView.clipsToBounds = YES; // 圖片太大張，避免返回上一頁動畫 lag
 }
 

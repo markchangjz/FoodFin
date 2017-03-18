@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Restaurant.h"
 
 @interface RestaurantDetailViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *restaurantImageView;
-@property (copy, nonatomic) NSString *restaurantImage;
+@property (nonatomic) Restaurant *restaurant;
 
 @end

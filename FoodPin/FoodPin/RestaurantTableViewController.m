@@ -9,6 +9,7 @@
 #import "RestaurantTableViewController.h"
 #import "RestaurantDetailViewController.h"
 #import "RestaurantTableViewCell.h"
+#import "Restaurant.h"
 
 @interface RestaurantTableViewController () {
 	NSMutableArray *restaurantNames;
@@ -17,6 +18,8 @@
 	NSMutableArray *restaurantTypes;
 	NSMutableArray *restaurantIsVisited;
 }
+
+@property (nonatomic) NSMutableArray *restaurants;
 
 @end
 
@@ -36,6 +39,12 @@
 	restaurantIsVisited = [[NSMutableArray alloc] init];
 	for (int i = 1; i <= 21; i++) {
 		[restaurantIsVisited addObject:@NO];
+	}
+
+
+	self.restaurants = [[NSMutableArray alloc] init];
+	for (int i = 0; i < restaurantNames.count; i++) {
+		[self.restaurants addObject:[[Restaurant alloc] initWithName:restaurantNames[i] type:restaurantTypes[i] location:restaurantLocations[i] image:restaurantImages[i] isVisited:[restaurantIsVisited[i] boolValue]]];
 	}
 }
 
@@ -61,18 +70,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return restaurantNames.count;
+    return self.restaurants.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString *cellIdentifier = @"Cell";
 	RestaurantTableViewCell *cell = (RestaurantTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-	cell.nameLabel.text = restaurantNames[indexPath.row];
-	cell.locationLabel.text = restaurantLocations[indexPath.row];
-	cell.typeLabel.text = restaurantTypes[indexPath.row];
-	cell.thumbnailImageView.image = [UIImage imageNamed:restaurantImages[indexPath.row]];
-	cell.accessoryType = [restaurantIsVisited[indexPath.row] boolValue] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+
+	Restaurant *restaurant = self.restaurants[indexPath.row];
+	cell.nameLabel.text = restaurant.name;
+	cell.locationLabel.text = restaurant.location;
+	cell.typeLabel.text = restaurant.type;
+	cell.thumbnailImageView.image = [UIImage imageNamed:restaurant.image];
+	cell.accessoryType = restaurant.isVisited ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
 
     return cell;
 }
@@ -80,11 +90,7 @@
 // 有實作 tableView:editActionsForRowAtIndexPath: 此方法將失效，且不會自動產生 Delete 按鈕
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		[restaurantNames removeObjectAtIndex:indexPath.row];
-		[restaurantImages removeObjectAtIndex:indexPath.row];
-		[restaurantLocations removeObjectAtIndex:indexPath.row];
-		[restaurantTypes removeObjectAtIndex:indexPath.row];
-		[restaurantIsVisited removeObjectAtIndex:indexPath.row];
+		[self.restaurants removeObjectAtIndex:indexPath.row];
 
 		[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 	}
@@ -93,8 +99,9 @@
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
 	// 分享
 	UITableViewRowAction *shareAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Share" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-		NSString *defaultText = [NSString stringWithFormat:@"Just checking in at %@", restaurantNames[indexPath.row]];
-		UIImage *imageToShare = [UIImage imageNamed:restaurantImages[indexPath.row]];
+		Restaurant *restaurant = self.restaurants[indexPath.row];
+		NSString *defaultText = [NSString stringWithFormat:@"Just checking in at %@", restaurant.name];
+		UIImage *imageToShare = [UIImage imageNamed:restaurant.image];
 		UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[defaultText, imageToShare] applicationActivities:nil];
 		[self presentViewController:activityViewController animated:YES completion:nil];
 	}];
@@ -102,11 +109,7 @@
 
 	// 刪除
 	UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-		[restaurantNames removeObjectAtIndex:indexPath.row];
-		[restaurantImages removeObjectAtIndex:indexPath.row];
-		[restaurantLocations removeObjectAtIndex:indexPath.row];
-		[restaurantTypes removeObjectAtIndex:indexPath.row];
-		[restaurantIsVisited removeObjectAtIndex:indexPath.row];
+		[self.restaurants removeObjectAtIndex:indexPath.row];
 
 		[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 	}];
@@ -164,7 +167,7 @@
 	if ([segue.identifier isEqualToString:@"showRestaurantDetail"]) {
 		NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
 		RestaurantDetailViewController *destinationViewController = segue.destinationViewController;
-		destinationViewController.restaurantImage = restaurantImages[indexPath.row];
+		destinationViewController.restaurant = self.restaurants[indexPath.row];
 	}
 }
 
