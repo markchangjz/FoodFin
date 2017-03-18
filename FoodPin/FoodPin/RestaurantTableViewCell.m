@@ -15,7 +15,7 @@
     // Initialization code
 
 	// 圓角處理
-	self.thumbnailImageView.layer.cornerRadius = 30.0;
+	self.thumbnailImageView.layer.cornerRadius = CGRectGetWidth(self.thumbnailImageView.frame) / 2.0;
 	self.thumbnailImageView.clipsToBounds = YES;
 }
 
