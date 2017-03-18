@@ -95,9 +95,12 @@
 	[optionMenu addAction:callAction];
 
 	// 已來過選項
-	UIAlertAction *isVisitedAction = [UIAlertAction actionWithTitle:@"I've been here" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+	BOOL isVisited = [restaurantIsVisited[indexPath.row] boolValue];
+	NSString *title = isVisited ? @"I've not been here" : @"I've been here";
+	UIAlertAction *isVisitedAction = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 		UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-		cell.accessoryType = UITableViewCellAccessoryCheckmark;
+		cell.accessoryType = isVisited ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark;
+		restaurantIsVisited[indexPath.row] = isVisited ? @NO : @YES;
 	}];
 	[optionMenu addAction:isVisitedAction];
 
