@@ -7,6 +7,7 @@
 //
 
 #import "RestaurantTableViewController.h"
+#import "RestaurantDetailViewController.h"
 #import "RestaurantTableViewCell.h"
 
 @interface RestaurantTableViewController () {
@@ -117,35 +118,8 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	UIAlertController *optionMenu = [UIAlertController alertControllerWithTitle:nil message:@"What do you want to do?" preferredStyle:UIAlertControllerStyleActionSheet];
-
-	// 取消選項
-	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-	[optionMenu addAction:cancelAction];
-
-	// 撥電話選項
-	void (^callActionHandler)(UIAlertAction *) = ^(UIAlertAction *alertAction) {
-		UIAlertController *alertMessage = [UIAlertController alertControllerWithTitle:@"Service Unavailable" message:@"Sorry, the call feature is not available yet. Please retry later." preferredStyle:UIAlertControllerStyleAlert];
-		[alertMessage addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-		[self presentViewController:alertMessage animated:YES completion:nil];
-	};
-	UIAlertAction *callAction = [UIAlertAction actionWithTitle:[NSString stringWithFormat:@"Call 123-000-%ld", (long)indexPath.row] style:UIAlertActionStyleDefault handler:callActionHandler];
-	[optionMenu addAction:callAction];
-
-	// 已來過選項
-	BOOL isVisited = [restaurantIsVisited[indexPath.row] boolValue];
-	NSString *title = isVisited ? @"I've not been here" : @"I've been here";
-	UIAlertAction *isVisitedAction = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-		UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-		cell.accessoryType = isVisited ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark;
-		restaurantIsVisited[indexPath.row] = isVisited ? @NO : @YES;
-	}];
-	[optionMenu addAction:isVisitedAction];
-
-	[self presentViewController:optionMenu animated:YES completion:nil];
-
 	// 取消 Cell 被選取
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+//	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /*
@@ -182,14 +156,16 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+	if ([segue.identifier isEqualToString:@"showRestaurantDetail"]) {
+		NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+		RestaurantDetailViewController *destinationViewController = segue.destinationViewController;
+		destinationViewController.restaurantImage = restaurantImages[indexPath.row];
+	}
 }
-*/
 
 @end
