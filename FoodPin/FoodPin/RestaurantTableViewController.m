@@ -69,6 +69,37 @@
     return cell;
 }
 
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	UIAlertController *optionMenu = [UIAlertController alertControllerWithTitle:nil message:@"What do you want to do?" preferredStyle:UIAlertControllerStyleActionSheet];
+
+	// 取消選項
+	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+	[optionMenu addAction:cancelAction];
+
+	// 撥電話選項
+	void (^callActionHandler)(UIAlertAction *) = ^(UIAlertAction *alertAction) {
+		UIAlertController *alertMessage = [UIAlertController alertControllerWithTitle:@"Service Unavailable" message:@"Sorry, the call feature is not available yet. Please retry later." preferredStyle:UIAlertControllerStyleAlert];
+		[alertMessage addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+		[self presentViewController:alertMessage animated:YES completion:nil];
+	};
+	UIAlertAction *callAction = [UIAlertAction actionWithTitle:[NSString stringWithFormat:@"Call 123-000-%ld", (long)indexPath.row] style:UIAlertActionStyleDefault handler:callActionHandler];
+	[optionMenu addAction:callAction];
+
+	// 已來過選項
+	UIAlertAction *isVisitedAction = [UIAlertAction actionWithTitle:@"I've been here" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+		cell.accessoryType = UITableViewCellAccessoryCheckmark;
+	}];
+	[optionMenu addAction:isVisitedAction];
+
+	[self presentViewController:optionMenu animated:YES completion:nil];
+
+	// 取消 Cell 被選取
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
