@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D164A731E7D21AD007F077E /* RestaurantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D164A721E7D21AD007F077E /* RestaurantDetailViewController.m */; };
 		0D164A761E7D5D86007F077E /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D164A751E7D5D86007F077E /* Restaurant.m */; };
+		0D5FD4881E7D70D0004BC128 /* RestaurantDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5FD4871E7D70D0004BC128 /* RestaurantDetailTableViewCell.m */; };
 		0DD98A8D1E7C15EF0030E698 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98A8C1E7C15EF0030E698 /* main.m */; };
 		0DD98A901E7C15EF0030E698 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98A8F1E7C15EF0030E698 /* AppDelegate.m */; };
 		0DD98A961E7C15F00030E698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DD98A941E7C15F00030E698 /* Main.storyboard */; };
@@ -23,6 +24,8 @@
 		0D164A721E7D21AD007F077E /* RestaurantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDetailViewController.m; sourceTree = "<group>"; };
 		0D164A741E7D5D86007F077E /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
 		0D164A751E7D5D86007F077E /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
+		0D5FD4861E7D70D0004BC128 /* RestaurantDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantDetailTableViewCell.h; sourceTree = "<group>"; };
+		0D5FD4871E7D70D0004BC128 /* RestaurantDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDetailTableViewCell.m; sourceTree = "<group>"; };
 		0DD98A881E7C15EF0030E698 /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD98A8C1E7C15EF0030E698 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0DD98A8E1E7C15EF0030E698 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,15 +72,17 @@
 			children = (
 				0DD98A8E1E7C15EF0030E698 /* AppDelegate.h */,
 				0DD98A8F1E7C15EF0030E698 /* AppDelegate.m */,
+				0D164A741E7D5D86007F077E /* Restaurant.h */,
+				0D164A751E7D5D86007F077E /* Restaurant.m */,
 				0DD98A941E7C15F00030E698 /* Main.storyboard */,
 				0DD98AA21E7C17800030E698 /* RestaurantTableViewController.h */,
 				0DD98AA31E7C17800030E698 /* RestaurantTableViewController.m */,
-				0D164A711E7D21AD007F077E /* RestaurantDetailViewController.h */,
-				0D164A721E7D21AD007F077E /* RestaurantDetailViewController.m */,
 				0DE32E721E7C1F9400F99BF6 /* RestaurantTableViewCell.h */,
 				0DE32E731E7C1F9400F99BF6 /* RestaurantTableViewCell.m */,
-				0D164A741E7D5D86007F077E /* Restaurant.h */,
-				0D164A751E7D5D86007F077E /* Restaurant.m */,
+				0D164A711E7D21AD007F077E /* RestaurantDetailViewController.h */,
+				0D164A721E7D21AD007F077E /* RestaurantDetailViewController.m */,
+				0D5FD4861E7D70D0004BC128 /* RestaurantDetailTableViewCell.h */,
+				0D5FD4871E7D70D0004BC128 /* RestaurantDetailTableViewCell.m */,
 				0DD98A971E7C15F00030E698 /* Assets.xcassets */,
 				0DD98A991E7C15F00030E698 /* LaunchScreen.storyboard */,
 				0DD98A9C1E7C15F00030E698 /* Info.plist */,
@@ -166,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DE32E741E7C1F9400F99BF6 /* RestaurantTableViewCell.m in Sources */,
+				0D5FD4881E7D70D0004BC128 /* RestaurantDetailTableViewCell.m in Sources */,
 				0D164A731E7D21AD007F077E /* RestaurantDetailViewController.m in Sources */,
 				0DD98AA41E7C17800030E698 /* RestaurantTableViewController.m in Sources */,
 				0DD98A901E7C15EF0030E698 /* AppDelegate.m in Sources */,
