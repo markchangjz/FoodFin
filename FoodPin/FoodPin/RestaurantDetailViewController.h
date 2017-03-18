@@ -11,6 +11,7 @@
 
 @interface RestaurantDetailViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *restaurantImageView;
 @property (nonatomic) Restaurant *restaurant;
 
