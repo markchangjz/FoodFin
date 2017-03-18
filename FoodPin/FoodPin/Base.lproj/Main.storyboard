@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Restaurant Table View Controller-->
+        <!--Food Pin-->
         <scene sceneID="zhn-y9-S7S">
             <objects>
                 <tableViewController id="uCD-1R-UXb" customClass="RestaurantTableViewController" sceneMemberID="viewController">
@@ -82,7 +82,7 @@
                             <outlet property="delegate" destination="uCD-1R-UXb" id="4es-hS-6zP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="i5h-e8-ZuM"/>
+                    <navigationItem key="navigationItem" title="Food Pin" id="i5h-e8-ZuM"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvU-za-542" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
