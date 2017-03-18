@@ -7,8 +7,9 @@
 //
 
 #import "RestaurantDetailViewController.h"
+#import "RestaurantDetailTableViewCell.h"
 
-@interface RestaurantDetailViewController ()
+@interface RestaurantDetailViewController () <UITableViewDataSource, UITabBarDelegate>
 
 @end
 
@@ -24,6 +25,42 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Table View
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	NSString *cellIdentifier = @"Cell";
+	RestaurantDetailTableViewCell *cell = (RestaurantDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+
+	switch (indexPath.row) {
+		case 0:
+			cell.fieldLabel.text = @"Name";
+			cell.valueLabel.text = self.restaurant.name;
+			break;
+		case 1:
+			cell.fieldLabel.text = @"Type";
+			cell.valueLabel.text = self.restaurant.type;
+			break;
+		case 2:
+			cell.fieldLabel.text = @"Location";
+			cell.valueLabel.text = self.restaurant.location;
+			break;
+		case 3:
+			cell.fieldLabel.text = @"Been here";
+			cell.valueLabel.text = self.restaurant.isVisited ? @"Yes, I've been here before" : @"No";
+			break;
+		default:
+			cell.fieldLabel.text = @"";
+			cell.valueLabel.text = @"";
+			break;
+	}
+
+	return cell;
 }
 
 /*
