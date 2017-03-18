@@ -76,6 +76,7 @@
     return cell;
 }
 
+// 有實作 tableView:editActionsForRowAtIndexPath: 此方法將失效，且不會自動產生 Delete 按鈕
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
 		[restaurantNames removeObjectAtIndex:indexPath.row];
@@ -86,6 +87,31 @@
 
 		[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 	}
+}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+	// 分享
+	UITableViewRowAction *shareAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Share" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+		NSString *defaultText = [NSString stringWithFormat:@"Just checking in at %@", restaurantNames[indexPath.row]];
+		UIImage *imageToShare = [UIImage imageNamed:restaurantImages[indexPath.row]];
+		UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[defaultText, imageToShare] applicationActivities:nil];
+		[self presentViewController:activityViewController animated:YES completion:nil];
+	}];
+	shareAction.backgroundColor = [UIColor colorWithRed:28.0/255.0 green:165.0/255.0 blue:253.0/255.0 alpha:1.0];
+
+	// 刪除
+	UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+		[restaurantNames removeObjectAtIndex:indexPath.row];
+		[restaurantImages removeObjectAtIndex:indexPath.row];
+		[restaurantLocations removeObjectAtIndex:indexPath.row];
+		[restaurantTypes removeObjectAtIndex:indexPath.row];
+		[restaurantIsVisited removeObjectAtIndex:indexPath.row];
+
+		[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+	}];
+	deleteAction.backgroundColor = [UIColor colorWithRed:202.0/255.0 green:202.0/255.0 blue:203.0/255.0 alpha:1.0];
+
+	return @[deleteAction, shareAction];
 }
 
 #pragma mark - Table view delegate
