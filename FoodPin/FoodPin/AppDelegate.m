@@ -17,6 +17,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
+
+	// 設定 UINavigationBar 外觀
+	[UINavigationBar appearance].barTintColor = [UIColor colorWithRed:242.0/255.0 green:116.0/255.0 blue:119.0/255.0 alpha:1.0];
+	[UINavigationBar appearance].tintColor = [UIColor whiteColor];
+
+	UIFont *font = [UIFont fontWithName:@"Avenir-Light" size:24.0];
+	[UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: font};
+
 	return YES;
 }
 
