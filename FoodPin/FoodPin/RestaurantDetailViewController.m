@@ -71,6 +71,10 @@
 	return cell;
 }
 
+- (IBAction)close:(UIStoryboardSegue *)segue {
+	
+}
+
 /*
 #pragma mark - Navigation
 

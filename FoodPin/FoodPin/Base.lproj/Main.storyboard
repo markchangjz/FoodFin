@@ -195,10 +195,10 @@
             </objects>
             <point key="canvasLocation" x="1620" y="79.610194902548727"/>
         </scene>
-        <!--View Controller-->
+        <!--Review View Controller-->
         <scene sceneID="ABO-ao-3iO">
             <objects>
-                <viewController id="6mh-Tw-vkZ" sceneMemberID="viewController">
+                <viewController id="6mh-Tw-vkZ" customClass="ReviewViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xkb-mw-h4K"/>
                         <viewControllerLayoutGuide type="bottom" id="FIv-3B-71T"/>
@@ -210,8 +210,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barrafina" translatesAutoresizingMaskIntoConstraints="NO" id="vW0-By-h1L">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've dined here. What did you thik?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7G7-ql-Bq0">
-                                <rect key="frame" x="30" y="90" width="315" height="72"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've dined here. What did you think?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7G7-ql-Bq0">
+                                <rect key="frame" x="25" y="90" width="325" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -274,12 +274,15 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="close"/>
+                                <connections>
+                                    <segue destination="p89-SW-PRb" kind="unwind" unwindAction="close:" id="jnp-av-9C0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7G7-ql-Bq0" firstAttribute="top" secondItem="xkb-mw-h4K" secondAttribute="bottom" constant="70" id="74B-YV-15V"/>
-                            <constraint firstAttribute="trailing" secondItem="7G7-ql-Bq0" secondAttribute="trailing" constant="30" id="M5q-FM-jcz"/>
+                            <constraint firstAttribute="trailing" secondItem="7G7-ql-Bq0" secondAttribute="trailing" constant="25" id="M5q-FM-jcz"/>
                             <constraint firstItem="7G7-ql-Bq0" firstAttribute="centerX" secondItem="6ZS-Dw-xw8" secondAttribute="centerX" id="PUY-tj-3Wj"/>
                             <constraint firstAttribute="trailing" secondItem="vW0-By-h1L" secondAttribute="trailing" id="Rgf-bw-P0j"/>
                             <constraint firstItem="V7e-hh-Mpx" firstAttribute="centerX" secondItem="6ZS-Dw-xw8" secondAttribute="centerX" id="UOH-Rs-OlD"/>
@@ -287,13 +290,17 @@
                             <constraint firstItem="V7e-hh-Mpx" firstAttribute="top" secondItem="7G7-ql-Bq0" secondAttribute="bottom" constant="40" id="X2D-z2-cbY"/>
                             <constraint firstItem="vW0-By-h1L" firstAttribute="top" secondItem="6ZS-Dw-xw8" secondAttribute="top" id="ZNo-Wt-oDj"/>
                             <constraint firstItem="6jF-dn-gh2" firstAttribute="trailing" secondItem="6ZS-Dw-xw8" secondAttribute="trailingMargin" id="cTQ-qX-QjR"/>
-                            <constraint firstItem="7G7-ql-Bq0" firstAttribute="leading" secondItem="6ZS-Dw-xw8" secondAttribute="leading" constant="30" id="fiH-dA-b6d"/>
+                            <constraint firstItem="7G7-ql-Bq0" firstAttribute="leading" secondItem="6ZS-Dw-xw8" secondAttribute="leading" constant="25" id="fiH-dA-b6d"/>
                             <constraint firstItem="6jF-dn-gh2" firstAttribute="top" secondItem="xkb-mw-h4K" secondAttribute="bottom" constant="20" id="h7v-Eo-Nmz"/>
                             <constraint firstItem="FIv-3B-71T" firstAttribute="top" secondItem="vW0-By-h1L" secondAttribute="bottom" id="oiA-Cf-Nlk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="vW0-By-h1L" id="zrR-qV-oCZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMm-NR-4hF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="p89-SW-PRb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2517.5999999999999" y="79.610194902548727"/>
         </scene>
