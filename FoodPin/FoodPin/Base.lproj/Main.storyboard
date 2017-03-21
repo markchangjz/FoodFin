@@ -114,7 +114,7 @@
                                         <rect key="frame" x="0.0" y="328" width="375" height="36"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jKf-gB-lYM" id="0fs-qg-fAS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="35.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xnd-Xw-Sgi">
@@ -157,11 +157,28 @@
                                     <outlet property="delegate" destination="5Te-ZE-aQA" id="EeT-PT-FqS"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaK-lr-SBX">
+                                <rect key="frame" x="319" y="72" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Moo-cD-Ehw"/>
+                                    <constraint firstAttribute="height" constant="40" id="ZKB-5i-pXR"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Button" image="rating"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="jaK-lr-SBX" firstAttribute="top" secondItem="Rs9-D1-guD" secondAttribute="bottom" constant="8" id="2og-Y1-xjy"/>
                             <constraint firstItem="Rhf-nd-OVD" firstAttribute="top" secondItem="t7g-GB-us7" secondAttribute="top" id="3Th-rH-kfW"/>
                             <constraint firstItem="Rhf-nd-OVD" firstAttribute="leading" secondItem="t7g-GB-us7" secondAttribute="leading" id="ZAc-ha-ikv"/>
+                            <constraint firstItem="jaK-lr-SBX" firstAttribute="trailing" secondItem="t7g-GB-us7" secondAttribute="trailingMargin" id="ZCN-Jp-iTl"/>
                             <constraint firstItem="PBf-w9-NAQ" firstAttribute="top" secondItem="Rhf-nd-OVD" secondAttribute="bottom" id="dDx-H6-PrO"/>
                             <constraint firstAttribute="trailing" secondItem="Rhf-nd-OVD" secondAttribute="trailing" id="ofG-aG-RVS"/>
                         </constraints>
@@ -194,4 +211,7 @@
             <point key="canvasLocation" x="-226.40000000000001" y="79.610194902548727"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="rating" width="128" height="128"/>
+    </resources>
 </document>
