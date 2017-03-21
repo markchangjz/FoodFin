@@ -57,6 +57,10 @@
 	// 滑動隱藏 Navigation Bar
 //	self.navigationController.hidesBarsOnSwipe = YES;
 
+	// 動態調整 Cell 高度
+	self.tableView.estimatedRowHeight = 80.0;
+	self.tableView.rowHeight = UITableViewAutomaticDimension;
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
