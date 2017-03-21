@@ -32,7 +32,7 @@
 
 	restaurantImages = [NSMutableArray arrayWithArray:@[@"cafedeadend.jpg", @"homei.jpg", @"teakha.jpg", @"cafeloisl.jpg", @"petiteoyster.jpg", @"forkeerestaurant.jpg", @"posatelier.jpg", @"bourkestreetbakery.jpg", @"haighschocolate.jpg", @"palominoespresso.jpg", @"upstate.jpg", @"traif.jpg", @"grahamavenuemeats.jpg", @"wafflewolf.jpg", @"fiveleaves.jpg", @"cafelore.jpg", @"confessional.jpg", @"barrafina.jpg", @"donostia.jpg", @"royaloak.jpg", @"thaicafe.jpg"]];
 
-	restaurantLocations = [NSMutableArray arrayWithArray:@[@"Hong Kong", @"Hong Kong", @"Hong Kong", @"Hong Kong", @"Hong Kong", @"Hong Kong", @"Hong Kong", @"Sydney", @"Sydney", @"Sydney", @"New York", @"New York", @"New York", @"New York", @"New York", @"New York", @"New York", @"London", @"London", @"London", @"London"]];
+	restaurantLocations = [NSMutableArray arrayWithArray:@[@"G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", @"Shop B, G/F, 22-24A Tai Ping San Street SOHO, Sheung Wan, Hong Kong", @"Shop B, 18 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", @"Shop B, 20 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", @"24 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", @"Shop J-K., 200 Hollywood Road, SOHO, Sheung Wan, Hong Kong", @"G/F, 62 Po Hing Fong, Sheung Wan, Hong Kong", @"633 Bourke St Sydney New South Wales 2010 Surry Hills", @"412-414 George St Sydney New South Wales", @"Shop 1 61 York St Sydney New South Wales", @"95 1st Ave New York, NY 10003", @"229 S 4th St Brooklyn, NY 11211", @"445 Graham Ave Brooklyn, NY 11211", @"413 Graham Ave Brooklyn, NY 11211", @"18 Bedford Ave Brooklyn, NY 11222", @"Sunset Park 4601 4th Ave Brooklyn, NY 11220", @"308 E 6th St New York, NY 10003", @"54 Frith Street London W1D 4SL United Kingdom", @"10 Seymour Place London W1H 7ND United Kingdom", @"2 Regency Street London SW1P 4BZ United Kingdom", @"22 Charlwood Street London SW1V 2DY Pimlico"]];
 
 	restaurantTypes = [NSMutableArray arrayWithArray:@[@"Coffee & Tea Shop", @"Cafe", @"Tea House", @"Austrian / Causual Drink", @"French", @"Bakery", @"Bakery", @"Chocolate", @"Cafe", @"American / Seafood", @"American", @"American", @"Breakfast & Brunch", @"Coffee & Tea", @"Coffee & Tea", @"Latin American", @"Spanish", @"Spanish", @"Spanish", @"British", @"Thai"]];
 
@@ -40,7 +40,6 @@
 	for (int i = 1; i <= 21; i++) {
 		[restaurantIsVisited addObject:@NO];
 	}
-
 
 	self.restaurants = [[NSMutableArray alloc] init];
 	for (int i = 0; i < restaurantNames.count; i++) {
