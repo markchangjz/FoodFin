@@ -24,6 +24,10 @@
 	self.restaurantImageView.image = [UIImage imageNamed:self.restaurant.image];
 	self.restaurantImageView.clipsToBounds = YES; // 圖片太大張，避免返回上一頁動畫 lag
 	self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // 移除多餘的分隔線
+
+	// 動態調整 Cell 高度
+	self.tableView.estimatedRowHeight = 36.0;
+	self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)didReceiveMemoryWarning {
