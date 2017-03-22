@@ -172,7 +172,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="6mh-Tw-vkZ" kind="presentation" identifier="showReview" modalPresentationStyle="overCurrentContext" id="EpN-NO-FTf"/>
+                                    <segue destination="6mh-Tw-vkZ" kind="presentation" identifier="showReview" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="EpN-NO-FTf"/>
                                 </connections>
                             </button>
                         </subviews>
