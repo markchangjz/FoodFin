@@ -8,6 +8,7 @@
 
 #import "RestaurantDetailViewController.h"
 #import "RestaurantDetailTableViewCell.h"
+#import "ReviewViewController.h"
 
 @interface RestaurantDetailViewController () <UITableViewDataSource, UITabBarDelegate>
 
@@ -72,7 +73,9 @@
 }
 
 - (IBAction)close:(UIStoryboardSegue *)segue {
-	
+	ReviewViewController *reviewViewController = segue.sourceViewController;
+	NSString *rating = reviewViewController.rating;
+	[self.ratingButton setImage:[UIImage imageNamed:rating] forState:UIControlStateNormal];
 }
 
 /*

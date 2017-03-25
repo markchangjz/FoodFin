@@ -52,6 +52,24 @@
 	self.blurEffectView.frame = self.view.frame;
 }
 
+- (IBAction)ratingSelected:(UIButton *)sender {
+	switch (sender.tag) {
+		case 100:
+			self.rating = @"dislike";
+			break;
+		case 200:
+			self.rating = @"good";
+			break;
+		case 300:
+			self.rating = @"great";
+			break;
+		default:
+			break;
+	}
+
+	[self performSegueWithIdentifier:@"unwindToDetailView" sender:sender];
+}
+
 /*
 #pragma mark - Navigation
 

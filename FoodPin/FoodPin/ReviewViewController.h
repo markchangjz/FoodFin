@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIStackView *ratingStackView;
+@property (copy, nonatomic) NSString *rating;
 
 @end
