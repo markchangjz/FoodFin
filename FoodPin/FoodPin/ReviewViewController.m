@@ -20,15 +20,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-	// 設定半透明背景 http://stackoverflow.com/questions/11236367/display-clearcolor-uiviewcontroller-over-uiviewcontroller
-	self.view.alpha = 0.9;
-	self.view.backgroundColor = [UIColor clearColor];
-	self.view.opaque = NO;
-
 	// 加入模糊效果
 	UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
 	self.blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
 	[self.backgroundImageView addSubview:self.blurEffectView];
+
+	self.ratingStackView.transform = CGAffineTransformMakeScale(0.0, 0.0);
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+
+	[UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionTransitionNone animations:^{
+		self.ratingStackView.transform = CGAffineTransformIdentity;
+
+		// 設定半透明背景 http://stackoverflow.com/questions/11236367/display-clearcolor-uiviewcontroller-over-uiviewcontroller
+		self.view.alpha = 0.95;
+		self.view.backgroundColor = [UIColor clearColor];
+		self.view.opaque = NO;
+	} completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

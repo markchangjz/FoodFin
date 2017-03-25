@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e6m-O2-hzA" id="dmK-ZD-LzD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wRU-KW-e7u">
@@ -114,7 +114,7 @@
                                         <rect key="frame" x="0.0" y="328" width="375" height="36"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jKf-gB-lYM" id="0fs-qg-fAS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="35.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xnd-Xw-Sgi">
@@ -297,6 +297,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="vW0-By-h1L" id="zrR-qV-oCZ"/>
+                        <outlet property="ratingStackView" destination="V7e-hh-Mpx" id="BTF-hi-lOf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMm-NR-4hF" userLabel="First Responder" sceneMemberID="firstResponder"/>

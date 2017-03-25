@@ -11,5 +11,6 @@
 @interface ReviewViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIStackView *ratingStackView;
 
 @end
