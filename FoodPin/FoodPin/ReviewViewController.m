@@ -11,6 +11,7 @@
 @interface ReviewViewController ()
 
 @property (nonatomic) UIVisualEffectView *blurEffectView;
+@property (nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 
 @end
 
@@ -26,6 +27,10 @@
 	[self.backgroundImageView addSubview:self.blurEffectView];
 
 	self.ratingStackView.transform = CGAffineTransformMakeScale(0.0, 0.0);
+
+	// 加入點擊手勢
+	self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedReviewView:)];
+	[self.view addGestureRecognizer:self.tapGestureRecognizer];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -68,6 +73,25 @@
 	}
 
 	[self performSegueWithIdentifier:@"unwindToDetailView" sender:sender];
+}
+
+- (void)tappedReviewView:(UITapGestureRecognizer *)gesture {
+	// 點擊非畫面的元件，關閉 View
+	if (gesture.state == UIGestureRecognizerStateEnded) {
+		CGPoint tapPonit = [gesture locationInView:gesture.view];
+
+		if (CGRectContainsPoint(self.closeButton.frame, tapPonit)) {
+			return;
+		}
+		if (CGRectContainsPoint(self.ratingMessageLabel.frame, tapPonit)) {
+			return;
+		}
+		if (CGRectContainsPoint(self.ratingStackView.frame, tapPonit)) {
+			return;
+		}
+
+		[self performSegueWithIdentifier:@"unwindToDetailView" sender:gesture];
+	}
 }
 
 /*
