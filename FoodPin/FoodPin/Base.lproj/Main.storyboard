@@ -165,7 +165,7 @@
                                     <constraint firstAttribute="height" constant="40" id="ZKB-5i-pXR"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Button" image="rating"/>
+                                <state key="normal" image="rating"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="20"/>
@@ -175,11 +175,28 @@
                                     <segue destination="6mh-Tw-vkZ" kind="presentation" identifier="showReview" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="EpN-NO-FTf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fn-Bm-9k0">
+                                <rect key="frame" x="319" y="120" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="cWe-Ik-U04"/>
+                                    <constraint firstAttribute="width" constant="40" id="gyD-HX-TJn"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="map"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jaK-lr-SBX" firstAttribute="top" secondItem="Rs9-D1-guD" secondAttribute="bottom" constant="8" id="2og-Y1-xjy"/>
                             <constraint firstItem="Rhf-nd-OVD" firstAttribute="top" secondItem="t7g-GB-us7" secondAttribute="top" id="3Th-rH-kfW"/>
+                            <constraint firstItem="5fn-Bm-9k0" firstAttribute="top" secondItem="jaK-lr-SBX" secondAttribute="bottom" constant="8" id="K5E-lL-At9"/>
+                            <constraint firstItem="5fn-Bm-9k0" firstAttribute="trailing" secondItem="t7g-GB-us7" secondAttribute="trailingMargin" id="QHD-k1-cKa"/>
                             <constraint firstItem="Rhf-nd-OVD" firstAttribute="leading" secondItem="t7g-GB-us7" secondAttribute="leading" id="ZAc-ha-ikv"/>
                             <constraint firstItem="jaK-lr-SBX" firstAttribute="trailing" secondItem="t7g-GB-us7" secondAttribute="trailingMargin" id="ZCN-Jp-iTl"/>
                             <constraint firstItem="PBf-w9-NAQ" firstAttribute="top" secondItem="Rhf-nd-OVD" secondAttribute="bottom" id="dDx-H6-PrO"/>
@@ -342,6 +359,7 @@
         <image name="dislike" width="64" height="64"/>
         <image name="good" width="128" height="128"/>
         <image name="great" width="128" height="128"/>
+        <image name="map" width="32" height="32"/>
         <image name="rating" width="128" height="128"/>
     </resources>
 </document>
