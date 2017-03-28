@@ -9,7 +9,7 @@
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
 
-@interface MapViewController ()
+@interface MapViewController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
@@ -21,6 +21,10 @@
     [super viewDidLoad];
 
 	self.title = self.restaurant.name;
+	self.mapView.delegate = self;
+	self.mapView.showsCompass = YES;
+	self.mapView.showsScale = YES;
+	self.mapView.showsTraffic = YES;
 
 	CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
 	[geoCoder geocodeAddressString:self.restaurant.location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
@@ -50,6 +54,31 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - MKMapViewDelegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+	NSString *identifier = @"MyPin";
+
+	if (self.mapView.userLocation == annotation) {
+		return nil;
+	}
+
+	MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+	if (annotationView == nil) {
+		annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+		annotationView.canShowCallout = YES;
+	}
+
+	// 加上圖片
+	UIImageView *leftIconView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 53.0, 53.0)];
+	leftIconView.image = [UIImage imageNamed:self.restaurant.image];
+	annotationView.leftCalloutAccessoryView = leftIconView;
+
+	annotationView.pinTintColor = [UIColor orangeColor]; // 自訂大頭針顏色
+
+	return annotationView;
 }
 
 /*
