@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *restaurantImageView;
-@property (nonatomic) Restaurant *restaurant;
 @property (weak, nonatomic) IBOutlet UIButton *ratingButton;
+@property (nonatomic) Restaurant *restaurant;
 
 @end
