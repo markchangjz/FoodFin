@@ -20,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+	self.title = self.restaurant.name;
+
 	CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
 	[geoCoder geocodeAddressString:self.restaurant.location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
 		if (error != nil) {

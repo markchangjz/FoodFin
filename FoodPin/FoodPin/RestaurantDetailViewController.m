@@ -30,6 +30,9 @@
 	// 動態調整 Cell 高度
 	self.tableView.estimatedRowHeight = 36.0;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
+
+	// 將返回按鈕標題清空
+	self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 - (void)didReceiveMemoryWarning {
