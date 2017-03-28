@@ -10,6 +10,7 @@
 		0D164A731E7D21AD007F077E /* RestaurantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D164A721E7D21AD007F077E /* RestaurantDetailViewController.m */; };
 		0D164A761E7D5D86007F077E /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D164A751E7D5D86007F077E /* Restaurant.m */; };
 		0D5FD4881E7D70D0004BC128 /* RestaurantDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5FD4871E7D70D0004BC128 /* RestaurantDetailTableViewCell.m */; };
+		0D9F85011E8A3884000DA3DA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9F85001E8A3884000DA3DA /* MapKit.framework */; };
 		0DD98A8D1E7C15EF0030E698 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98A8C1E7C15EF0030E698 /* main.m */; };
 		0DD98A901E7C15EF0030E698 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98A8F1E7C15EF0030E698 /* AppDelegate.m */; };
 		0DD98A961E7C15F00030E698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DD98A941E7C15F00030E698 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		0D164A751E7D5D86007F077E /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
 		0D5FD4861E7D70D0004BC128 /* RestaurantDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantDetailTableViewCell.h; sourceTree = "<group>"; };
 		0D5FD4871E7D70D0004BC128 /* RestaurantDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDetailTableViewCell.m; sourceTree = "<group>"; };
+		0D9F85001E8A3884000DA3DA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0DD98A881E7C15EF0030E698 /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD98A8C1E7C15EF0030E698 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0DD98A8E1E7C15EF0030E698 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -48,17 +50,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D9F85011E8A3884000DA3DA /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D9F84FF1E8A3884000DA3DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D9F85001E8A3884000DA3DA /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0DD98A7F1E7C15EF0030E698 = {
 			isa = PBXGroup;
 			children = (
 				0DD98A8A1E7C15EF0030E698 /* FoodPin */,
 				0DD98A891E7C15EF0030E698 /* Products */,
+				0D9F84FF1E8A3884000DA3DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +149,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = Y53W55T72H;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
