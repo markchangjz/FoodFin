@@ -57,6 +57,8 @@
 	self.blurEffectView.frame = self.view.frame;
 }
 
+#pragma mark - IBAction
+
 - (IBAction)ratingSelected:(UIButton *)sender {
 	switch (sender.tag) {
 		case 100:
