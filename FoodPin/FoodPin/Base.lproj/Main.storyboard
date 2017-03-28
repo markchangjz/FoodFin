@@ -337,10 +337,10 @@
             </objects>
             <point key="canvasLocation" x="2517.5999999999999" y="79.610194902548727"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="7YV-R1-6By">
             <objects>
-                <viewController id="Orb-eM-jFe" sceneMemberID="viewController">
+                <viewController id="Orb-eM-jFe" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UdK-vm-MMM"/>
                         <viewControllerLayoutGuide type="bottom" id="iLj-Ux-7WO"/>
@@ -361,6 +361,9 @@
                             <constraint firstItem="gCd-3H-Wcn" firstAttribute="top" secondItem="59g-9e-rd8" secondAttribute="top" id="M7H-d9-CMN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="gCd-3H-Wcn" id="stU-ZP-eQg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xlW-lD-uPl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,0 +1,63 @@
+//
+//  MapViewController.m
+//  FoodPin
+//
+//  Created by MarkChang on 2017/3/28.
+//  Copyright © 2017年 MarkChang. All rights reserved.
+//
+
+#import "MapViewController.h"
+#import <MapKit/MapKit.h>
+
+@interface MapViewController ()
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+@end
+
+@implementation MapViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+	CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+	[geoCoder geocodeAddressString:self.restaurant.location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+		if (error != nil) {
+			NSLog(@"%@", error.localizedDescription);
+			return;
+		}
+
+		if (placemarks != nil) {
+			// 取得第一個座標
+			CLPlacemark *placemark = placemarks[0];
+
+			// 加上標記
+			MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+			annotation.title = self.restaurant.name;
+			annotation.subtitle = self.restaurant.type;
+
+			if (placemark.location != nil) {
+				annotation.coordinate = placemark.location.coordinate;
+				[self.mapView showAnnotations:@[annotation] animated:YES];
+				[self.mapView selectAnnotation:annotation animated:YES];
+			}
+		}
+	}];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end
