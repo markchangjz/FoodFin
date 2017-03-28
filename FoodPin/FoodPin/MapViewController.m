@@ -22,9 +22,9 @@
 
 	self.title = self.restaurant.name;
 	self.mapView.delegate = self;
-	self.mapView.showsCompass = YES;
-	self.mapView.showsScale = YES;
-	self.mapView.showsTraffic = YES;
+	self.mapView.showsCompass = YES; // 顯示指南針
+	self.mapView.showsScale = YES; // 顯示比例
+	self.mapView.showsTraffic = YES; // 顯示交通流量
 
 	CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
 	[geoCoder geocodeAddressString:self.restaurant.location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
