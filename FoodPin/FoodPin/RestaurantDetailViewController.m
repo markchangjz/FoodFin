@@ -75,7 +75,9 @@
 - (IBAction)close:(UIStoryboardSegue *)segue {
 	ReviewViewController *reviewViewController = segue.sourceViewController;
 	NSString *rating = reviewViewController.rating;
-	[self.ratingButton setImage:[UIImage imageNamed:rating] forState:UIControlStateNormal];
+	if (rating) {
+		[self.ratingButton setImage:[UIImage imageNamed:rating] forState:UIControlStateNormal];
+	}
 }
 
 /*
