@@ -151,11 +151,19 @@
                             <outlet property="delegate" destination="Bdu-W5-2cb" id="BWH-Vf-lLi"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Restaurant" id="en1-db-Bd6"/>
+                    <navigationItem key="navigationItem" title="New Restaurant" id="en1-db-Bd6">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="yfh-vd-6Ue">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="Qjw-Kk-976" kind="unwind" unwindAction="unwindToHomeScreen:" id="2RF-lc-6fr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XFq-Lu-0IQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Qjw-Kk-976" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3399" y="-662"/>
+            <point key="canvasLocation" x="2518" y="-663"/>
         </scene>
         <!--Food Pin-->
         <scene sceneID="zhn-y9-S7S">
@@ -230,7 +238,13 @@
                             <outlet property="delegate" destination="uCD-1R-UXb" id="4es-hS-6zP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Food Pin" id="i5h-e8-ZuM"/>
+                    <navigationItem key="navigationItem" title="Food Pin" id="i5h-e8-ZuM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SqQ-Jf-XOd">
+                            <connections>
+                                <segue destination="5AN-fF-TP6" kind="presentation" identifier="addRestaurant" id="yU6-Gz-1q5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvU-za-542" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -549,7 +563,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fH8-t2-2hB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2518" y="-661"/>
+            <point key="canvasLocation" x="1620" y="-663"/>
         </scene>
     </scenes>
     <resources>

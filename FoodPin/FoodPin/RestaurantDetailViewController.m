@@ -76,6 +76,8 @@
 	return cell;
 }
 
+#pragma mark - Unwind
+
 - (IBAction)close:(UIStoryboardSegue *)segue {
 	ReviewViewController *reviewViewController = segue.sourceViewController;
 	NSString *rating = reviewViewController.rating;
