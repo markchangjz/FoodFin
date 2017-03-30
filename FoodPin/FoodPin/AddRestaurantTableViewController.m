@@ -8,7 +8,9 @@
 
 #import "AddRestaurantTableViewController.h"
 
-@interface AddRestaurantTableViewController ()
+@interface AddRestaurantTableViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -36,6 +38,7 @@
 		// 確認是否有權限 https://medium.com/@apppeterpan/ios-10%E5%AD%98%E5%8F%96%E4%BD%BF%E7%94%A8%E8%80%85%E7%A7%81%E5%AF%86%E8%B3%87%E6%96%99%E9%83%BD%E8%A6%81%E5%8A%A0%E4%B8%8Ausage-description-a01715e56491
 		if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
 			UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+			imagePicker.delegate = self;
 			imagePicker.allowsEditing = YES;
 			imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 
@@ -44,6 +47,16 @@
 
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	}
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+	self.imageView.image = info[UIImagePickerControllerOriginalImage];
+	self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+	self.imageView.clipsToBounds = YES;
+
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*
