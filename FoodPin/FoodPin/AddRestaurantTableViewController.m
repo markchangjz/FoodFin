@@ -53,8 +53,30 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 	self.imageView.image = info[UIImagePickerControllerOriginalImage];
-	self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+	self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 	self.imageView.clipsToBounds = YES;
+
+	NSLayoutConstraint *leadingConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.imageView.superview attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+	leadingConstraint.active = YES;
+
+	NSLayoutConstraint *trailingConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.imageView.superview attribute:NSLayoutAttributeTrailing multiplier:1 constant:0];
+	trailingConstraint.active = YES;
+
+	NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.imageView.superview attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+	topConstraint.active = YES;
+
+	NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.imageView.superview attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+	bottomConstraint.active = YES;
+
+	// VFL
+//	self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
+//
+//	NSDictionary *viewDictionary = @{@"imageView": self.imageView};
+//
+//	NSArray *hConstraint = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[imageView]-0-|" options:0 metrics:nil views:viewDictionary];
+//	NSArray *vConstraint = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[imageView]-0-|" options:0 metrics:nil views:viewDictionary];
+//	[self.view addConstraints:hConstraint];
+//	[self.view addConstraints:vConstraint];
 
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
