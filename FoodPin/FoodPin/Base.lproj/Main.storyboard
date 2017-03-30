@@ -155,12 +155,22 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="yfh-vd-6Ue">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="Qjw-Kk-976" kind="unwind" unwindAction="unwindToHomeScreen:" id="2RF-lc-6fr"/>
+                                <segue destination="Qjw-Kk-976" kind="unwind" identifier="unwindToHomeScreen" unwindAction="unwindToHomeScreen:" id="2RF-lc-6fr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="jyH-Wb-mtJ">
+                            <connections>
+                                <action selector="saveRestaurant:" destination="Bdu-W5-2cb" id="IKO-VU-4Ql"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="9Jc-vh-QDA" id="biJ-6V-V19"/>
+                        <outlet property="locationTextField" destination="fVQ-qz-58v" id="kJr-1I-YUb"/>
+                        <outlet property="nameTextField" destination="Tx6-Bd-Ma9" id="P5u-bN-OsV"/>
+                        <outlet property="noButton" destination="MWW-Dv-mVh" id="LeN-n9-KMB"/>
+                        <outlet property="typeTextField" destination="rCV-gJ-xQz" id="TBl-6E-D1h"/>
+                        <outlet property="yesButton" destination="uE2-9Q-gTk" id="sew-SJ-Ct4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XFq-Lu-0IQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,6 +11,11 @@
 @interface AddRestaurantTableViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *typeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *locationTextField;
+@property (weak, nonatomic) IBOutlet UIButton *yesButton;
+@property (weak, nonatomic) IBOutlet UIButton *noButton;
 
 @end
 
@@ -79,6 +84,20 @@
 //	[self.view addConstraints:vConstraint];
 
 	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - IBAction
+
+- (IBAction)saveRestaurant:(UIBarButtonItem *)sender {
+	if ([self.nameTextField.text isEqualToString:@""] || [self.typeTextField.text isEqualToString:@""] || [self.locationTextField.text isEqualToString:@""]) {
+		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"One of the field is blank" preferredStyle:UIAlertControllerStyleAlert];
+		[alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+		[self presentViewController:alertController animated:YES completion:nil];
+
+		return;
+	}
+
+	[self performSegueWithIdentifier:@"unwindToHomeScreen" sender:self];
 }
 
 /*
