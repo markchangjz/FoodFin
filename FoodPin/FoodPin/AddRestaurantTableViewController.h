@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Restaurant.h"
 
 @interface AddRestaurantTableViewController : UITableViewController
+
+@property (nonatomic) Restaurant *restaurant;
 
 @end

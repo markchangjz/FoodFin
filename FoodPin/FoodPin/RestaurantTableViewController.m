@@ -10,6 +10,7 @@
 #import "RestaurantDetailViewController.h"
 #import "RestaurantTableViewCell.h"
 #import "Restaurant.h"
+#import "AddRestaurantTableViewController.h"
 
 @interface RestaurantTableViewController () {
 	NSMutableArray *restaurantNames;
@@ -172,7 +173,9 @@
 #pragma mark - Unwind
 
 - (IBAction)unwindToHomeScreen:(UIStoryboardSegue *)segue {
-
+	AddRestaurantTableViewController *addRestaurantTableViewController = segue.sourceViewController;
+	[self.restaurants insertObject:addRestaurantTableViewController.restaurant atIndex:0];
+	[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
 }
 
 #pragma mark - Navigation

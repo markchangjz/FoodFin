@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *locationTextField;
 @property (weak, nonatomic) IBOutlet UIButton *yesButton;
 @property (weak, nonatomic) IBOutlet UIButton *noButton;
+@property (nonatomic) BOOL isVisited;
 
 @end
 
@@ -23,7 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+	self.isVisited = YES;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -97,7 +99,22 @@
 		return;
 	}
 
+	NSLog(@"name = %@, type = %@, location = %@, isVisited = %@", self.nameTextField.text, self.typeTextField.text, self.locationTextField.text, self.isVisited ? @"YES" : @"NO");
+	self.restaurant = [[Restaurant alloc] initWithName:self.nameTextField.text type:self.typeTextField.text location:self.locationTextField.text image:nil isVisited:self.isVisited];
 	[self performSegueWithIdentifier:@"unwindToHomeScreen" sender:self];
+}
+
+- (IBAction)toggleBeenHereButton:(UIButton *)sender {
+	if (sender == self.yesButton) {
+		self.isVisited = YES;
+		self.yesButton.backgroundColor = [UIColor redColor];
+		self.noButton.backgroundColor = [UIColor lightGrayColor];
+	}
+	else if (sender == self.noButton) {
+		self.isVisited = NO;
+		self.yesButton.backgroundColor = [UIColor lightGrayColor];
+		self.noButton.backgroundColor = [UIColor redColor];
+	}
 }
 
 /*
