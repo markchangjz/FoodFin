@@ -8,7 +8,7 @@
 
 #import "AddRestaurantTableViewController.h"
 
-@interface AddRestaurantTableViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface AddRestaurantTableViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -26,6 +26,16 @@
     [super viewDidLoad];
 
 	self.isVisited = YES;
+
+	// 設定鍵盤上 return 上顯示的字串
+	self.nameTextField.returnKeyType = UIReturnKeyNext;
+	self.typeTextField.returnKeyType = UIReturnKeyNext;
+	self.locationTextField.returnKeyType = UIReturnKeyDone;
+
+	self.nameTextField.delegate = self;
+	self.typeTextField.delegate = self;
+	self.locationTextField.delegate = self;
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -111,6 +121,8 @@
 }
 
 - (IBAction)toggleBeenHereButton:(UIButton *)sender {
+	[self.view endEditing:YES]; // 關閉鍵盤
+
 	if (sender == self.yesButton) {
 		self.isVisited = YES;
 		self.yesButton.backgroundColor = [UIColor redColor];
@@ -121,6 +133,20 @@
 		self.yesButton.backgroundColor = [UIColor lightGrayColor];
 		self.noButton.backgroundColor = [UIColor redColor];
 	}
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	if (textField.returnKeyType == UIReturnKeyNext) {
+		UITextField *nextTextField = (UITextField *)[self.view viewWithTag:textField.tag + 1];
+		[nextTextField becomeFirstResponder];
+	}
+	else if (textField.returnKeyType == UIReturnKeyDone) {
+		[textField resignFirstResponder];
+	}
+
+	return YES;
 }
 
 /*
