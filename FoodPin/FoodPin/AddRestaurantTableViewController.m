@@ -51,9 +51,13 @@
 
 			[self presentViewController:imagePicker animated:YES completion:nil];
 		}
-
-		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	}
+	else if (indexPath.row >= 1 && indexPath.row <= 3) {
+		UITextField *textField = (UITextField *)[self.view viewWithTag:indexPath.row];
+		[textField becomeFirstResponder];
+	}
+
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
