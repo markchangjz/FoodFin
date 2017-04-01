@@ -95,6 +95,8 @@
 #pragma mark - IBAction
 
 - (IBAction)saveRestaurant:(UIBarButtonItem *)sender {
+	[self.view endEditing:YES]; // 關閉鍵盤
+
 	if ([self.nameTextField.text isEqualToString:@""] || [self.typeTextField.text isEqualToString:@""] || [self.locationTextField.text isEqualToString:@""]) {
 		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"One of the field is blank" preferredStyle:UIAlertControllerStyleAlert];
 		[alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
