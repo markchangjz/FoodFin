@@ -12,7 +12,7 @@
 #import "Restaurant.h"
 #import "AddRestaurantTableViewController.h"
 
-@interface RestaurantTableViewController () <UISearchResultsUpdating> {
+@interface RestaurantTableViewController () <UISearchResultsUpdating, UISearchControllerDelegate> {
 	NSMutableArray *restaurantNames;
 	NSMutableArray *restaurantImages;
 	NSMutableArray *restaurantLocations;
@@ -67,6 +67,7 @@
 	// 設定 search bar
 	self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
 	self.searchController.searchResultsUpdater = self;
+	self.searchController.delegate = self;
 	self.searchController.dimsBackgroundDuringPresentation = NO;
 	self.searchController.searchBar.placeholder = @"Search restaurants...";
 	self.searchController.searchBar.tintColor = [UIColor blackColor];
@@ -199,10 +200,17 @@
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
 	NSString *searchText = searchController.searchBar.text;
-	if (searchText) {
+	if (![searchText isEqualToString:@""]) {
 		[self filterContentForSearchText:searchText];
-		[self.tableView reloadData];
 	}
+
+	[self.tableView reloadData];
+}
+
+#pragma mark - UISearchControllerDelegate
+
+- (void)willPresentSearchController:(UISearchController *)searchController {
+	self.searchResults = self.restaurants; // 讓一開始搜尋的資料為原本資料，避免一開始全空不好看
 }
 
 #pragma mark - Unwind
