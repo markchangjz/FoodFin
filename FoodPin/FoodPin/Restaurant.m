@@ -10,12 +10,13 @@
 
 @implementation Restaurant
 
-- (instancetype)initWithName:(NSString *)name type:(NSString *)type location:(NSString *)location image:(UIImage *)image isVisited:(BOOL)isVisited {
+- (instancetype)initWithName:(NSString *)name type:(NSString *)type location:(NSString *)location rating:(NSString *)rating image:(UIImage *)image isVisited:(BOOL)isVisited {
 	self = [super init];
 	if (self) {
 		_name = name;
 		_type = type;
 		_location = location;
+		_rating = rating;
 		_image = image;
 		_isVisited = isVisited;
 	}

@@ -33,6 +33,11 @@
 
 	// 將返回按鈕標題清空
 	self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+
+	// 設定評分圖示
+	if (self.restaurant.rating) {
+		[self.ratingButton setImage:[UIImage imageNamed:self.restaurant.rating] forState:UIControlStateNormal];
+	}
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,6 +87,7 @@
 	ReviewViewController *reviewViewController = segue.sourceViewController;
 	NSString *rating = reviewViewController.rating;
 	if (rating) {
+		self.restaurant.rating = rating;
 		[self.ratingButton setImage:[UIImage imageNamed:rating] forState:UIControlStateNormal];
 	}
 }
