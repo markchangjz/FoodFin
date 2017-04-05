@@ -12,7 +12,7 @@
 #import "Restaurant.h"
 #import "AddRestaurantTableViewController.h"
 
-@interface RestaurantTableViewController () {
+@interface RestaurantTableViewController () <UISearchResultsUpdating> {
 	NSMutableArray *restaurantNames;
 	NSMutableArray *restaurantImages;
 	NSMutableArray *restaurantLocations;
@@ -21,6 +21,7 @@
 }
 
 @property (nonatomic) NSMutableArray *restaurants;
+@property (copy, nonatomic) NSArray *searchResults;
 @property (nonatomic) UISearchController *searchController;
 
 @end
@@ -65,7 +66,12 @@
 
 	// 設定 search bar
 	self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+	self.searchController.searchResultsUpdater = self;
+	self.searchController.dimsBackgroundDuringPresentation = NO;
+	self.searchController.searchBar.placeholder = @"Search restaurants...";
+	self.searchController.searchBar.tintColor = [UIColor blackColor];
 	self.tableView.tableHeaderView = self.searchController.searchBar;
+	self.definesPresentationContext = YES; // 避免點選搜尋結過後，push 到下一頁 search bar 仍顯示
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -79,21 +85,33 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - Function
+
+- (void)filterContentForSearchText:(NSString *)searchText {
+	NSPredicate *searchNamePredicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", searchText];
+	self.searchResults = [self.restaurants filteredArrayUsingPredicate:searchNamePredicate];
+}
+
+#pragma mark - Table view
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.restaurants.count;
+	if (self.searchController.active) {
+		return self.searchResults.count;
+	}
+	else {
+		return self.restaurants.count;
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString *cellIdentifier = @"Cell";
 	RestaurantTableViewCell *cell = (RestaurantTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 
-	Restaurant *restaurant = self.restaurants[indexPath.row];
+	Restaurant *restaurant = self.searchController.active ? self.searchResults[indexPath.row] : self.restaurants[indexPath.row];
 	cell.nameLabel.text = restaurant.name;
 	cell.locationLabel.text = restaurant.location;
 	cell.typeLabel.text = restaurant.type;
@@ -134,11 +152,13 @@
 	return @[deleteAction, shareAction];
 }
 
-#pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	// 取消 Cell 被選取
 //	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+	return !self.searchController.active;
 }
 
 /*
@@ -175,6 +195,16 @@
 }
 */
 
+#pragma mark - UISearchResultsUpdating
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+	NSString *searchText = searchController.searchBar.text;
+	if (searchText) {
+		[self filterContentForSearchText:searchText];
+		[self.tableView reloadData];
+	}
+}
+
 #pragma mark - Unwind
 
 - (IBAction)unwindToHomeScreen:(UIStoryboardSegue *)segue {
@@ -192,7 +222,7 @@
 	if ([segue.identifier isEqualToString:@"showRestaurantDetail"]) {
 		NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
 		RestaurantDetailViewController *destinationViewController = segue.destinationViewController;
-		destinationViewController.restaurant = self.restaurants[indexPath.row];
+		destinationViewController.restaurant = self.searchController.active ? self.searchResults[indexPath.row] : self.restaurants[indexPath.row];
 	}
 }
 
