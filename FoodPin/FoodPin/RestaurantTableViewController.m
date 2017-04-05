@@ -95,9 +95,10 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 #pragma mark - Function
 
 - (void)filterContentForSearchText:(NSString *)searchText scope:(SearchScope)scope {
+	// NSPredicate: http://www.cnblogs.com/MarsGG/articles/1949239.html
 	NSPredicate *searchNamePredicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", searchText];
 	NSPredicate *searchLocationPredicate = [NSPredicate predicateWithFormat:@"SELF.location CONTAINS[c] %@", searchText];
-	NSPredicate *searchAllPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:@[searchNamePredicate, searchLocationPredicate]];
+	NSPredicate *searchAllPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:@[searchNamePredicate, searchLocationPredicate]]; // http://stackoverflow.com/questions/25636007/nspredicate-with-multiple-conditions
 
 	switch (scope) {
 		case All:
@@ -238,6 +239,7 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 
 #pragma mark - UISearchBarDelegate
 
+// 切換 scope 類型
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
 	NSString *searchText = searchBar.text;
 
