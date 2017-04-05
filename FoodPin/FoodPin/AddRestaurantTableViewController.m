@@ -116,7 +116,7 @@
 	}
 
 	NSLog(@"name = %@, type = %@, location = %@, isVisited = %@", self.nameTextField.text, self.typeTextField.text, self.locationTextField.text, self.isVisited ? @"YES" : @"NO");
-	self.restaurant = [[Restaurant alloc] initWithName:self.nameTextField.text type:self.typeTextField.text location:self.locationTextField.text image:nil isVisited:self.isVisited];
+	self.restaurant = [[Restaurant alloc] initWithName:self.nameTextField.text type:self.typeTextField.text location:self.locationTextField.text image:self.imageView.image isVisited:self.isVisited];
 	[self performSegueWithIdentifier:@"unwindToHomeScreen" sender:self];
 }
 
