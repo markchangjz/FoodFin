@@ -203,7 +203,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wRU-KW-e7u">
                                             <rect key="frame" x="14" y="10" width="347" height="60"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aAB-7U-6eZ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aAB-7U-6eZ">
                                                     <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="ecV-uY-iK6"/>
