@@ -73,7 +73,7 @@
 
 	// 加上圖片
 	UIImageView *leftIconView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 53.0, 53.0)];
-	leftIconView.image = [UIImage imageNamed:self.restaurant.image];
+	leftIconView.image = self.restaurant.image;
 	annotationView.leftCalloutAccessoryView = leftIconView;
 
 	annotationView.pinTintColor = [UIColor orangeColor]; // 自訂大頭針顏色

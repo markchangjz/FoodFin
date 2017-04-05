@@ -7,15 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Restaurant : NSObject
 
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *type;
 @property (copy, nonatomic) NSString *location;
-@property (copy, nonatomic) NSString *image;
+@property (nonatomic) UIImage *image;
 @property (nonatomic) BOOL isVisited;
 
-- (instancetype)initWithName:(NSString *)name type:(NSString *)type location:(NSString *)location image:(NSString *)image isVisited:(BOOL)isVisited;
+- (instancetype)initWithName:(NSString *)name type:(NSString *)type location:(NSString *)location image:(UIImage *)image isVisited:(BOOL)isVisited;
 
 @end

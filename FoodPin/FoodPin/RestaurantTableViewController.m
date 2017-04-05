@@ -44,7 +44,7 @@
 
 	self.restaurants = [[NSMutableArray alloc] init];
 	for (int i = 0; i < restaurantNames.count; i++) {
-		[self.restaurants addObject:[[Restaurant alloc] initWithName:restaurantNames[i] type:restaurantTypes[i] location:restaurantLocations[i] image:restaurantImages[i] isVisited:[restaurantIsVisited[i] boolValue]]];
+		[self.restaurants addObject:[[Restaurant alloc] initWithName:restaurantNames[i] type:restaurantTypes[i] location:restaurantLocations[i] image:[UIImage imageNamed:restaurantImages[i]] isVisited:[restaurantIsVisited[i] boolValue]]];
 	}
 }
 
@@ -92,7 +92,7 @@
 	cell.nameLabel.text = restaurant.name;
 	cell.locationLabel.text = restaurant.location;
 	cell.typeLabel.text = restaurant.type;
-	cell.thumbnailImageView.image = [UIImage imageNamed:restaurant.image];
+	cell.thumbnailImageView.image = restaurant.image;
 	cell.accessoryType = restaurant.isVisited ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
 
     return cell;
@@ -112,7 +112,7 @@
 	UITableViewRowAction *shareAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Share" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
 		Restaurant *restaurant = self.restaurants[indexPath.row];
 		NSString *defaultText = [NSString stringWithFormat:@"Just checking in at %@", restaurant.name];
-		UIImage *imageToShare = [UIImage imageNamed:restaurant.image];
+		UIImage *imageToShare = restaurant.image;
 		UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[defaultText, imageToShare] applicationActivities:nil];
 		[self presentViewController:activityViewController animated:YES completion:nil];
 	}];

@@ -23,7 +23,7 @@
 
 	self.title = self.restaurant.name;
 
-	self.restaurantImageView.image = [UIImage imageNamed:self.restaurant.image];
+	self.restaurantImageView.image = self.restaurant.image;
 	self.restaurantImageView.clipsToBounds = YES; // 圖片太大張，避免返回上一頁動畫 lag
 	self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // 移除多餘的分隔線
 
