@@ -21,6 +21,7 @@
 }
 
 @property (nonatomic) NSMutableArray *restaurants;
+@property (nonatomic) UISearchController *searchController;
 
 @end
 
@@ -61,6 +62,10 @@
 	// 動態調整 Cell 高度
 	self.tableView.estimatedRowHeight = 80.0;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
+
+	// 設定 search bar
+	self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+	self.tableView.tableHeaderView = self.searchController.searchBar;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
