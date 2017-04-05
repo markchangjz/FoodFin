@@ -76,7 +76,7 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 	self.searchController.dimsBackgroundDuringPresentation = NO;
 	self.searchController.searchBar.placeholder = @"Search restaurants...";
 	self.searchController.searchBar.tintColor = [UIColor blackColor];
-	self.searchController.searchBar.scopeButtonTitles = @[@"All", @"Name", @"Address"];
+	self.searchController.searchBar.scopeButtonTitles = @[@"All", @"Name", @"Location"];
 	self.tableView.tableHeaderView = self.searchController.searchBar;
 	self.definesPresentationContext = YES; // 避免點選搜尋結過後，push 到下一頁 search bar 仍顯示
 
