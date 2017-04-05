@@ -12,7 +12,11 @@
 #import "Restaurant.h"
 #import "AddRestaurantTableViewController.h"
 
-@interface RestaurantTableViewController () <UISearchResultsUpdating, UISearchControllerDelegate> {
+typedef NS_ENUM(NSUInteger, SearchScope) {
+	All, Name, Location
+};
+
+@interface RestaurantTableViewController () <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate> {
 	NSMutableArray *restaurantNames;
 	NSMutableArray *restaurantImages;
 	NSMutableArray *restaurantLocations;
@@ -68,9 +72,11 @@
 	self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
 	self.searchController.searchResultsUpdater = self;
 	self.searchController.delegate = self;
+	self.searchController.searchBar.delegate = self;
 	self.searchController.dimsBackgroundDuringPresentation = NO;
 	self.searchController.searchBar.placeholder = @"Search restaurants...";
 	self.searchController.searchBar.tintColor = [UIColor blackColor];
+	self.searchController.searchBar.scopeButtonTitles = @[@"All", @"Name", @"Address"];
 	self.tableView.tableHeaderView = self.searchController.searchBar;
 	self.definesPresentationContext = YES; // 避免點選搜尋結過後，push 到下一頁 search bar 仍顯示
 
@@ -88,9 +94,24 @@
 
 #pragma mark - Function
 
-- (void)filterContentForSearchText:(NSString *)searchText {
+- (void)filterContentForSearchText:(NSString *)searchText scope:(SearchScope)scope {
 	NSPredicate *searchNamePredicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", searchText];
-	self.searchResults = [self.restaurants filteredArrayUsingPredicate:searchNamePredicate];
+	NSPredicate *searchLocationPredicate = [NSPredicate predicateWithFormat:@"SELF.location CONTAINS[c] %@", searchText];
+	NSPredicate *searchAllPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:@[searchNamePredicate, searchLocationPredicate]];
+
+	switch (scope) {
+		case All:
+			self.searchResults = [self.restaurants filteredArrayUsingPredicate:searchAllPredicate];
+			break;
+		case Name:
+			self.searchResults = [self.restaurants filteredArrayUsingPredicate:searchNamePredicate];
+			break;
+		case Location:
+			self.searchResults = [self.restaurants filteredArrayUsingPredicate:searchLocationPredicate];
+			break;
+		default:
+			break;
+	}
 }
 
 #pragma mark - Table view
@@ -201,7 +222,33 @@
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
 	NSString *searchText = searchController.searchBar.text;
 	if (![searchText isEqualToString:@""]) {
-		[self filterContentForSearchText:searchText];
+		if (searchController.searchBar.selectedScopeButtonIndex == 0) {
+			[self filterContentForSearchText:searchText scope:All];
+		}
+		else if (searchController.searchBar.selectedScopeButtonIndex == 1) {
+			[self filterContentForSearchText:searchText scope:Name];
+		}
+		else if (searchController.searchBar.selectedScopeButtonIndex == 2) {
+			[self filterContentForSearchText:searchText scope:Location];
+		}
+	}
+
+	[self.tableView reloadData];
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
+	NSString *searchText = searchBar.text;
+
+	if (searchBar.selectedScopeButtonIndex == 0) {
+		[self filterContentForSearchText:searchText scope:All];
+	}
+	else if (searchBar.selectedScopeButtonIndex == 1) {
+		[self filterContentForSearchText:searchText scope:Name];
+	}
+	else if (searchBar.selectedScopeButtonIndex == 2) {
+		[self filterContentForSearchText:searchText scope:Location];
 	}
 
 	[self.tableView reloadData];
