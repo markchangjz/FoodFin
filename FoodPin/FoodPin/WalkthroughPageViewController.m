@@ -51,14 +51,16 @@
 	return [self viewControllerAtIndex:index];
 }
 
-- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
-	return self.pageHeadings.count;
-}
-
-- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
-	WalkthroughContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WalkthroughContentViewController"];
-	return pageContentViewController.index;
-}
+//// 預設的 PageViewController indicator
+//- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
+//	return self.pageHeadings.count;
+//}
+//
+//// 預設的 PageViewController indicator
+//- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
+//	WalkthroughContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WalkthroughContentViewController"];
+//	return pageContentViewController.index;
+//}
 
 #pragma mark - Function
 
