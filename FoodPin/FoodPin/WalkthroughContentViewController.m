@@ -21,6 +21,8 @@
 	self.headingLabel.text = self.heading;
 	self.contentLabel.text = self.content;
 	self.contentImageView.image = [UIImage imageNamed:self.imageFile];
+
+	self.pageControl.currentPage = self.index;
 }
 
 - (void)didReceiveMemoryWarning {

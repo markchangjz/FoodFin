@@ -598,6 +598,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="jb0-J2-2Jq">
+                                <rect key="frame" x="168" y="610" width="39" height="37"/>
+                            </pageControl>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodpin-intro-1" translatesAutoresizingMaskIntoConstraints="NO" id="olR-AI-9Es">
                                 <rect key="frame" x="47.5" y="80" width="280" height="300"/>
                                 <constraints>
@@ -608,11 +611,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="k1n-6Y-qY6" firstAttribute="top" secondItem="jb0-J2-2Jq" secondAttribute="bottom" constant="20" id="4nh-xa-uAW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="brh-QY-9A2" secondAttribute="trailing" constant="30" id="DOl-An-qkN"/>
                             <constraint firstItem="c2I-N8-eA2" firstAttribute="top" secondItem="qXl-sq-FWO" secondAttribute="bottom" constant="10" id="ENX-E7-n7K"/>
                             <constraint firstItem="c2I-N8-eA2" firstAttribute="centerX" secondItem="zPS-lW-PFG" secondAttribute="centerX" id="Ibg-Br-ZLb"/>
                             <constraint firstItem="brh-QY-9A2" firstAttribute="centerX" secondItem="zPS-lW-PFG" secondAttribute="centerX" id="R5X-0E-jab"/>
                             <constraint firstItem="olR-AI-9Es" firstAttribute="centerX" secondItem="zPS-lW-PFG" secondAttribute="centerX" id="SWD-iM-oTH"/>
+                            <constraint firstItem="jb0-J2-2Jq" firstAttribute="centerX" secondItem="zPS-lW-PFG" secondAttribute="centerX" id="bYk-hv-Gaa"/>
                             <constraint firstItem="brh-QY-9A2" firstAttribute="top" secondItem="olR-AI-9Es" secondAttribute="bottom" constant="40" id="iRF-4r-pY1"/>
                             <constraint firstItem="brh-QY-9A2" firstAttribute="leading" secondItem="zPS-lW-PFG" secondAttribute="leadingMargin" constant="30" id="z25-h2-SK8"/>
                             <constraint firstItem="olR-AI-9Es" firstAttribute="top" secondItem="c2I-N8-eA2" secondAttribute="bottom" constant="20" id="zXh-dB-8k4"/>
@@ -622,6 +627,7 @@
                         <outlet property="contentImageView" destination="olR-AI-9Es" id="ejw-b2-ypZ"/>
                         <outlet property="contentLabel" destination="brh-QY-9A2" id="cT8-rK-nrX"/>
                         <outlet property="headingLabel" destination="c2I-N8-eA2" id="yDW-Gx-Emj"/>
+                        <outlet property="pageControl" destination="jb0-J2-2Jq" id="f0z-YD-iei"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8wB-hr-SHY" userLabel="First Responder" sceneMemberID="firstResponder"/>
