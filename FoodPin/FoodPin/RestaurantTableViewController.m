@@ -11,6 +11,7 @@
 #import "RestaurantTableViewCell.h"
 #import "Restaurant.h"
 #import "AddRestaurantTableViewController.h"
+#import "WalkthroughPageViewController.h"
 
 typedef NS_ENUM(NSUInteger, SearchScope) {
 	All, Name, Location
@@ -79,6 +80,10 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 	self.searchController.searchBar.scopeButtonTitles = @[@"All", @"Name", @"Location"];
 	self.tableView.tableHeaderView = self.searchController.searchBar;
 	self.definesPresentationContext = YES; // 避免點選搜尋結過後，push 到下一頁 search bar 仍顯示
+
+	// 顯示引導畫面
+	WalkthroughPageViewController *pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WalkthroughPageViewController"];
+	[self presentViewController:pageViewController animated:YES completion:nil];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
