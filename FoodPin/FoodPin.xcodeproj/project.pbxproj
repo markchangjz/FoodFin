@@ -75,8 +75,8 @@
 			isa = PBXGroup;
 			children = (
 				0DD98A8A1E7C15EF0030E698 /* FoodPin */,
-				0DD98A891E7C15EF0030E698 /* Products */,
 				0D9F84FF1E8A3884000DA3DA /* Frameworks */,
+				0DD98A891E7C15EF0030E698 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,29 +91,29 @@
 		0DD98A8A1E7C15EF0030E698 /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
-				0DD98A8E1E7C15EF0030E698 /* AppDelegate.h */,
-				0DD98A8F1E7C15EF0030E698 /* AppDelegate.m */,
-				0D164A741E7D5D86007F077E /* Restaurant.h */,
-				0D164A751E7D5D86007F077E /* Restaurant.m */,
-				0DD98A941E7C15F00030E698 /* Main.storyboard */,
-				0DD98AA21E7C17800030E698 /* RestaurantTableViewController.h */,
-				0DD98AA31E7C17800030E698 /* RestaurantTableViewController.m */,
-				0DE32E721E7C1F9400F99BF6 /* RestaurantTableViewCell.h */,
-				0DE32E731E7C1F9400F99BF6 /* RestaurantTableViewCell.m */,
-				0D164A711E7D21AD007F077E /* RestaurantDetailViewController.h */,
-				0D164A721E7D21AD007F077E /* RestaurantDetailViewController.m */,
-				0D5FD4861E7D70D0004BC128 /* RestaurantDetailTableViewCell.h */,
-				0D5FD4871E7D70D0004BC128 /* RestaurantDetailTableViewCell.m */,
-				0DEF99F31E81277D004A87E3 /* ReviewViewController.h */,
-				0DEF99F41E81277D004A87E3 /* ReviewViewController.m */,
-				0D9F85021E8A4072000DA3DA /* MapViewController.h */,
-				0D9F85031E8A4072000DA3DA /* MapViewController.m */,
+				0DD98A8B1E7C15EF0030E698 /* Supporting Files */,
 				0D9F85101E8CE3CC000DA3DA /* AddRestaurantTableViewController.h */,
 				0D9F85111E8CE3CC000DA3DA /* AddRestaurantTableViewController.m */,
+				0DD98A8E1E7C15EF0030E698 /* AppDelegate.h */,
+				0DD98A8F1E7C15EF0030E698 /* AppDelegate.m */,
 				0DD98A971E7C15F00030E698 /* Assets.xcassets */,
-				0DD98A991E7C15F00030E698 /* LaunchScreen.storyboard */,
 				0DD98A9C1E7C15F00030E698 /* Info.plist */,
-				0DD98A8B1E7C15EF0030E698 /* Supporting Files */,
+				0DD98A991E7C15F00030E698 /* LaunchScreen.storyboard */,
+				0DD98A941E7C15F00030E698 /* Main.storyboard */,
+				0D9F85021E8A4072000DA3DA /* MapViewController.h */,
+				0D9F85031E8A4072000DA3DA /* MapViewController.m */,
+				0D164A741E7D5D86007F077E /* Restaurant.h */,
+				0D164A751E7D5D86007F077E /* Restaurant.m */,
+				0D5FD4861E7D70D0004BC128 /* RestaurantDetailTableViewCell.h */,
+				0D5FD4871E7D70D0004BC128 /* RestaurantDetailTableViewCell.m */,
+				0D164A711E7D21AD007F077E /* RestaurantDetailViewController.h */,
+				0D164A721E7D21AD007F077E /* RestaurantDetailViewController.m */,
+				0DE32E721E7C1F9400F99BF6 /* RestaurantTableViewCell.h */,
+				0DE32E731E7C1F9400F99BF6 /* RestaurantTableViewCell.m */,
+				0DD98AA21E7C17800030E698 /* RestaurantTableViewController.h */,
+				0DD98AA31E7C17800030E698 /* RestaurantTableViewController.m */,
+				0DEF99F31E81277D004A87E3 /* ReviewViewController.h */,
+				0DEF99F41E81277D004A87E3 /* ReviewViewController.m */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -190,8 +190,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DD98A9B1E7C15F00030E698 /* LaunchScreen.storyboard in Resources */,
 				0DD98A981E7C15F00030E698 /* Assets.xcassets in Resources */,
+				0DD98A9B1E7C15F00030E698 /* LaunchScreen.storyboard in Resources */,
 				0DD98A961E7C15F00030E698 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,16 +203,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DE32E741E7C1F9400F99BF6 /* RestaurantTableViewCell.m in Sources */,
-				0D5FD4881E7D70D0004BC128 /* RestaurantDetailTableViewCell.m in Sources */,
 				0D9F85121E8CE3CC000DA3DA /* AddRestaurantTableViewController.m in Sources */,
-				0DEF99F51E81277D004A87E3 /* ReviewViewController.m in Sources */,
-				0D9F85041E8A4072000DA3DA /* MapViewController.m in Sources */,
-				0D164A731E7D21AD007F077E /* RestaurantDetailViewController.m in Sources */,
-				0DD98AA41E7C17800030E698 /* RestaurantTableViewController.m in Sources */,
 				0DD98A901E7C15EF0030E698 /* AppDelegate.m in Sources */,
-				0D164A761E7D5D86007F077E /* Restaurant.m in Sources */,
 				0DD98A8D1E7C15EF0030E698 /* main.m in Sources */,
+				0D9F85041E8A4072000DA3DA /* MapViewController.m in Sources */,
+				0D164A761E7D5D86007F077E /* Restaurant.m in Sources */,
+				0D5FD4881E7D70D0004BC128 /* RestaurantDetailTableViewCell.m in Sources */,
+				0D164A731E7D21AD007F077E /* RestaurantDetailViewController.m in Sources */,
+				0DE32E741E7C1F9400F99BF6 /* RestaurantTableViewCell.m in Sources */,
+				0DD98AA41E7C17800030E698 /* RestaurantTableViewController.m in Sources */,
+				0DEF99F51E81277D004A87E3 /* ReviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
