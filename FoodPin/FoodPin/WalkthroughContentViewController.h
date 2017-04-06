@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView;
 
-@property (nonatomic) NSInteger *index;
+@property (nonatomic) NSInteger index;
 @property (copy, nonatomic) NSString *heading;
 @property (copy, nonatomic) NSString *content;
 @property (copy, nonatomic) NSString *imageFile;

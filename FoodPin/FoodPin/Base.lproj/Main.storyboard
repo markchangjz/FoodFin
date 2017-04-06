@@ -566,10 +566,10 @@
             </objects>
             <point key="canvasLocation" x="-226.40000000000001" y="79.610194902548727"/>
         </scene>
-        <!--Page View Controller-->
+        <!--Walkthrough Page View Controller-->
         <scene sceneID="Ur7-yd-jVa">
             <objects>
-                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="xTk-5M-ipF" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="xTk-5M-ipF" customClass="WalkthroughPageViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1px-ti-k5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-226" y="824"/>
@@ -577,7 +577,7 @@
         <!--Walkthrough Content View Controller-->
         <scene sceneID="hA4-Kj-x2b">
             <objects>
-                <viewController storyboardIdentifier="WalkthroughContent" id="6gE-zb-m9q" customClass="WalkthroughContentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughContentViewController" id="6gE-zb-m9q" customClass="WalkthroughContentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qXl-sq-FWO"/>
                         <viewControllerLayoutGuide type="bottom" id="k1n-6Y-qY6"/>
