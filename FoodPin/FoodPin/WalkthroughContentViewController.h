@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UIButton *forwardButton;
 
 @property (nonatomic) NSInteger index;
 @property (copy, nonatomic) NSString *heading;

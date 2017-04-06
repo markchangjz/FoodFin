@@ -10,4 +10,6 @@
 
 @interface WalkthroughPageViewController : UIPageViewController
 
+- (void)forward:(NSInteger)index;
+
 @end

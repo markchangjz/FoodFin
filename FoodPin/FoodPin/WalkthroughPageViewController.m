@@ -83,6 +83,11 @@
 	return nil;
 }
 
+- (void)forward:(NSInteger)index {
+	WalkthroughContentViewController *nextPageViewController = [self viewControllerAtIndex:index + 1];
+	[self setViewControllers:@[nextPageViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+}
+
 #pragma mark - Init variable
 
 - (NSArray *)pageHeadings {
