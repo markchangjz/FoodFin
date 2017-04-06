@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="40F-ef-Ng6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="40F-ef-Ng6">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -566,6 +566,68 @@
             </objects>
             <point key="canvasLocation" x="-226.40000000000001" y="79.610194902548727"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="Ur7-yd-jVa">
+            <objects>
+                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="xTk-5M-ipF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1px-ti-k5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-226" y="824"/>
+        </scene>
+        <!--Walkthrough Content View Controller-->
+        <scene sceneID="hA4-Kj-x2b">
+            <objects>
+                <viewController storyboardIdentifier="WalkthroughContent" id="6gE-zb-m9q" customClass="WalkthroughContentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qXl-sq-FWO"/>
+                        <viewControllerLayoutGuide type="bottom" id="k1n-6Y-qY6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zPS-lW-PFG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personalize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2I-N8-eA2">
+                                <rect key="frame" x="118" y="30" width="138.5" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin your favorite restaurants and create your own food guide" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brh-QY-9A2">
+                                <rect key="frame" x="46" y="420" width="283" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodpin-intro-1" translatesAutoresizingMaskIntoConstraints="NO" id="olR-AI-9Es">
+                                <rect key="frame" x="47.5" y="80" width="280" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="4Lz-4K-fsj"/>
+                                    <constraint firstAttribute="height" constant="300" id="vE3-7w-E0x"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="brh-QY-9A2" secondAttribute="trailing" constant="30" id="DOl-An-qkN"/>
+                            <constraint firstItem="c2I-N8-eA2" firstAttribute="top" secondItem="qXl-sq-FWO" secondAttribute="bottom" constant="10" id="ENX-E7-n7K"/>
+                            <constraint firstItem="c2I-N8-eA2" firstAttribute="centerX" secondItem="zPS-lW-PFG" secondAttribute="centerX" id="Ibg-Br-ZLb"/>
+                            <constraint firstItem="brh-QY-9A2" firstAttribute="centerX" secondItem="zPS-lW-PFG" secondAttribute="centerX" id="R5X-0E-jab"/>
+                            <constraint firstItem="olR-AI-9Es" firstAttribute="centerX" secondItem="zPS-lW-PFG" secondAttribute="centerX" id="SWD-iM-oTH"/>
+                            <constraint firstItem="brh-QY-9A2" firstAttribute="top" secondItem="olR-AI-9Es" secondAttribute="bottom" constant="40" id="iRF-4r-pY1"/>
+                            <constraint firstItem="brh-QY-9A2" firstAttribute="leading" secondItem="zPS-lW-PFG" secondAttribute="leadingMargin" constant="30" id="z25-h2-SK8"/>
+                            <constraint firstItem="olR-AI-9Es" firstAttribute="top" secondItem="c2I-N8-eA2" secondAttribute="bottom" constant="20" id="zXh-dB-8k4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentImageView" destination="olR-AI-9Es" id="ejw-b2-ypZ"/>
+                        <outlet property="contentLabel" destination="brh-QY-9A2" id="cT8-rK-nrX"/>
+                        <outlet property="headingLabel" destination="c2I-N8-eA2" id="yDW-Gx-Emj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8wB-hr-SHY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="712.79999999999995" y="823.53823088455783"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="wY3-AV-HS2">
             <objects>
@@ -589,6 +651,7 @@
         <image name="barrafina" width="448" height="448"/>
         <image name="close" width="64" height="64"/>
         <image name="dislike" width="64" height="64"/>
+        <image name="foodpin-intro-1" width="377" height="292"/>
         <image name="good" width="128" height="128"/>
         <image name="great" width="128" height="128"/>
         <image name="map" width="32" height="32"/>

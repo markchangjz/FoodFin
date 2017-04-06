@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D164A731E7D21AD007F077E /* RestaurantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D164A721E7D21AD007F077E /* RestaurantDetailViewController.m */; };
 		0D164A761E7D5D86007F077E /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D164A751E7D5D86007F077E /* Restaurant.m */; };
+		0D2BFA201E95FA7300F88A08 /* WalkthroughContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2BFA1F1E95FA7300F88A08 /* WalkthroughContentViewController.m */; };
 		0D5FD4881E7D70D0004BC128 /* RestaurantDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5FD4871E7D70D0004BC128 /* RestaurantDetailTableViewCell.m */; };
 		0D9F85011E8A3884000DA3DA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9F85001E8A3884000DA3DA /* MapKit.framework */; };
 		0D9F85041E8A4072000DA3DA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F85031E8A4072000DA3DA /* MapViewController.m */; };
@@ -28,6 +29,8 @@
 		0D164A721E7D21AD007F077E /* RestaurantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDetailViewController.m; sourceTree = "<group>"; };
 		0D164A741E7D5D86007F077E /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
 		0D164A751E7D5D86007F077E /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
+		0D2BFA1E1E95FA7300F88A08 /* WalkthroughContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalkthroughContentViewController.h; sourceTree = "<group>"; };
+		0D2BFA1F1E95FA7300F88A08 /* WalkthroughContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalkthroughContentViewController.m; sourceTree = "<group>"; };
 		0D5FD4861E7D70D0004BC128 /* RestaurantDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantDetailTableViewCell.h; sourceTree = "<group>"; };
 		0D5FD4871E7D70D0004BC128 /* RestaurantDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDetailTableViewCell.m; sourceTree = "<group>"; };
 		0D9F85001E8A3884000DA3DA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -114,6 +117,8 @@
 				0DD98AA31E7C17800030E698 /* RestaurantTableViewController.m */,
 				0DEF99F31E81277D004A87E3 /* ReviewViewController.h */,
 				0DEF99F41E81277D004A87E3 /* ReviewViewController.m */,
+				0D2BFA1E1E95FA7300F88A08 /* WalkthroughContentViewController.h */,
+				0D2BFA1F1E95FA7300F88A08 /* WalkthroughContentViewController.m */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 				0DE32E741E7C1F9400F99BF6 /* RestaurantTableViewCell.m in Sources */,
 				0DD98AA41E7C17800030E698 /* RestaurantTableViewController.m in Sources */,
 				0DEF99F51E81277D004A87E3 /* ReviewViewController.m in Sources */,
+				0D2BFA201E95FA7300F88A08 /* WalkthroughContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
