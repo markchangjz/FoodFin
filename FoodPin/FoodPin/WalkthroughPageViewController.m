@@ -51,6 +51,15 @@
 	return [self viewControllerAtIndex:index];
 }
 
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
+	return self.pageHeadings.count;
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
+	WalkthroughContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WalkthroughContentViewController"];
+	return pageContentViewController.index;
+}
+
 #pragma mark - Function
 
 - (WalkthroughContentViewController *)viewControllerAtIndex:(NSInteger)index {
