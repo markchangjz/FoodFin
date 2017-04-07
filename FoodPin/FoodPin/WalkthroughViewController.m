@@ -91,6 +91,7 @@
 		[self forward:self.pageControl.currentPage];
 	}
 	else {
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasViewedWalkthrough"];
 		[self dismissViewControllerAnimated:YES completion:nil];
 	}
 

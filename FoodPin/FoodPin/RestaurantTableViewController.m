@@ -82,24 +82,13 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 	self.tableView.tableHeaderView = self.searchController.searchBar;
 	self.definesPresentationContext = YES; // 避免點選搜尋結過後，push 到下一頁 search bar 仍顯示
 
+	[self performSelector:@selector(showWalkthroughView) withObject:nil afterDelay:1.0];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-
-	// 顯示引導畫面
-//	WalkthroughPageViewController *pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WalkthroughPageViewController"];
-//	[self presentViewController:pageViewController animated:YES completion:nil];
-
-	// 顯示引導畫面 2
-	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Walkthrough" bundle:nil];
-	WalkthroughViewController *pageViewController = [storyboard instantiateViewControllerWithIdentifier:@"WalkthroughViewController"];
-	[self presentViewController:pageViewController animated:YES completion:nil];
 }
 
 #pragma mark - Function
@@ -123,6 +112,21 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 		default:
 			break;
 	}
+}
+
+- (void)showWalkthroughView {
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hasViewedWalkthrough"]) {
+		return;
+	}
+
+//	// 顯示引導畫面
+//	WalkthroughPageViewController *pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WalkthroughPageViewController"];
+//	[self presentViewController:pageViewController animated:YES completion:nil];
+
+	// 顯示引導畫面 2
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Walkthrough" bundle:nil];
+	WalkthroughViewController *pageViewController = [storyboard instantiateViewControllerWithIdentifier:@"WalkthroughViewController"];
+	[self presentViewController:pageViewController animated:YES completion:nil];
 }
 
 #pragma mark - Table view

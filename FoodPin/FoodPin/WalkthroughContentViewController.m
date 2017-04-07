@@ -49,6 +49,7 @@
 		}
 			break;
 		case 2:
+			[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasViewedWalkthrough"];
 			[self dismissViewControllerAnimated:YES completion:nil];
 			break;
 		default:
