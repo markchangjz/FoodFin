@@ -47,6 +47,11 @@
 	self.pageControl.currentPage = 0;
 }
 
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+	// 設定只能顯示直向
+	return UIInterfaceOrientationMaskPortrait;
+}
+
 #pragma mark - UIPageViewControllerDataSource
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
