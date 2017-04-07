@@ -13,6 +13,4 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
-- (void)forward:(NSInteger)index;
-
 @end

@@ -26,29 +26,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Walkthrough" bundle:nil];
 	UIViewController *page1 = [storyboard instantiateViewControllerWithIdentifier:@"page1"];
 	UIViewController *page2 = [storyboard instantiateViewControllerWithIdentifier:@"page2"];
 	UIViewController *page3 = [storyboard instantiateViewControllerWithIdentifier:@"page3"];
+	self.pages = [[NSMutableArray alloc] initWithObjects:page1, page2, page3, nil];
 
-	self.pages = [[NSMutableArray alloc] init];
-	[self.pages addObject:page1];
-	[self.pages addObject:page2];
-	[self.pages addObject:page3];
-
+	// 設定 PageViewController
 	self.pageContainer = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
 	self.pageContainer.delegate = self;
 	self.pageContainer.dataSource = self;
 	[self.pageContainer setViewControllers:@[page1] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-
 	[self.view addSubview:self.pageContainer.view];
+
+	// 把 nextButton 跟 pageControl 提到畫面最前方
+	[self.view bringSubviewToFront:self.nextButton];
 	[self.view bringSubviewToFront:self.pageControl];
 	self.pageControl.numberOfPages = self.pages.count;
 	self.pageControl.currentPage = 0;
-
-	[self.view bringSubviewToFront:self.nextButton];
 }
 
 #pragma mark - UIPageViewControllerDataSource
@@ -72,6 +68,8 @@
 	NSInteger previousIndex = currentIndex - 1;
 	return self.pages[previousIndex];
 }
+
+#pragma mark - UIPageViewControllerDelegate
 
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
 	self.pendingIndex = [self.pages indexOfObject:pendingViewControllers.firstObject];
