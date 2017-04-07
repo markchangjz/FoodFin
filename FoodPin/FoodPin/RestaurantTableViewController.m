@@ -102,11 +102,6 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 	[self presentViewController:pageViewController animated:YES completion:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Function
 
 - (void)filterContentForSearchText:(NSString *)searchText scope:(SearchScope)scope {

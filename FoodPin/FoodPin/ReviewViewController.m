@@ -46,11 +46,6 @@
 	} completion:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)viewWillLayoutSubviews {
 	[super viewWillLayoutSubviews];
 

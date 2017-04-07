@@ -51,16 +51,10 @@
 	[self.view bringSubviewToFront:self.nextButton];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - UIPageViewControllerDataSource
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
 	NSInteger currentIndex = [self.pages indexOfObject:viewController];
-
 	if (currentIndex == self.pages.count - 1) {
 		return nil;
 	}
@@ -75,7 +69,7 @@
 		return nil;
 	}
 
-	NSInteger previousIndex = ((currentIndex - 1) % self.pages.count);
+	NSInteger previousIndex = currentIndex - 1;
 	return self.pages[previousIndex];
 }
 
@@ -92,13 +86,7 @@
 	[self handelNextButtonTitle];
 }
 
-#pragma mark - Function
-
-- (void)forward:(NSInteger)index {
-	UIViewController *nextPageViewController = (UIViewController *)[self.pages objectAtIndex:index + 1];
-	[self.pageContainer setViewControllers:@[nextPageViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-	self.pageControl.currentPage = index + 1;
-}
+#pragma mark - IBAction
 
 - (IBAction)nextButtonTapped:(UIButton *)sender {
 	if (self.pageControl.currentPage < self.pages.count - 1) {
@@ -109,6 +97,15 @@
 	}
 
 	[self handelNextButtonTitle];
+}
+
+#pragma mark - Function
+
+- (void)forward:(NSInteger)index {
+	UIViewController *nextPageViewController = (UIViewController *)[self.pages objectAtIndex:index + 1];
+	[self.pageContainer setViewControllers:@[nextPageViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+
+	self.pageControl.currentPage = index + 1;
 }
 
 - (void)handelNextButtonTitle {
