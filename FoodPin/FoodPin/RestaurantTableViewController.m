@@ -12,6 +12,7 @@
 #import "Restaurant.h"
 #import "AddRestaurantTableViewController.h"
 #import "WalkthroughPageViewController.h"
+#import "WalkthroughViewController.h"
 
 typedef NS_ENUM(NSUInteger, SearchScope) {
 	All, Name, Location
@@ -92,7 +93,12 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 	[super viewDidAppear:animated];
 
 	// 顯示引導畫面
-	WalkthroughPageViewController *pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WalkthroughPageViewController"];
+//	WalkthroughPageViewController *pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WalkthroughPageViewController"];
+//	[self presentViewController:pageViewController animated:YES completion:nil];
+
+	// 顯示引導畫面 2
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Walkthrough" bundle:nil];
+	WalkthroughViewController *pageViewController = [storyboard instantiateViewControllerWithIdentifier:@"WalkthroughViewController"];
 	[self presentViewController:pageViewController animated:YES completion:nil];
 }
 
