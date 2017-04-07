@@ -16,7 +16,7 @@
 @interface WalkthroughViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (nonatomic) UIPageViewController *pageContainer;
-@property (nonatomic) NSMutableArray *pages;
+@property (copy, nonatomic) NSArray *pages;
 @property (nonatomic) NSInteger currentIndex;
 @property (nonatomic) NSInteger pendingIndex;
 
@@ -31,7 +31,7 @@
 	UIViewController *page1 = [storyboard instantiateViewControllerWithIdentifier:@"page1"];
 	UIViewController *page2 = [storyboard instantiateViewControllerWithIdentifier:@"page2"];
 	UIViewController *page3 = [storyboard instantiateViewControllerWithIdentifier:@"page3"];
-	self.pages = [[NSMutableArray alloc] initWithObjects:page1, page2, page3, nil];
+	self.pages = @[page1, page2, page3];
 
 	// 設定 PageViewController
 	self.pageContainer = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
@@ -96,8 +96,9 @@
 		[self forward:self.pageControl.currentPage];
 	}
 	else {
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasViewedWalkthrough"];
-		[self dismissViewControllerAnimated:YES completion:nil];
+		[self dismissViewControllerAnimated:YES completion:^{
+			[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasViewedWalkthrough"];
+		}];
 	}
 
 	[self handelNextButtonTitle];

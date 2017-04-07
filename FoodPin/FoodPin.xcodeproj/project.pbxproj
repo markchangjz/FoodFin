@@ -114,6 +114,7 @@
 		0DD98A8A1E7C15EF0030E698 /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				0DD98A8B1E7C15EF0030E698 /* Supporting Files */,
 				0DD98A8E1E7C15EF0030E698 /* AppDelegate.h */,
 				0DD98A8F1E7C15EF0030E698 /* AppDelegate.m */,
 				0DD98A941E7C15F00030E698 /* Main.storyboard */,
@@ -138,11 +139,10 @@
 				0DEF99F31E81277D004A87E3 /* ReviewViewController.h */,
 				0DEF99F41E81277D004A87E3 /* ReviewViewController.m */,
 				0DCA9DCC1E97389300635A97 /* WalkthroughView */,
-				0D2BFA1E1E95FA7300F88A08 /* WalkthroughContentViewController.h */,
-				0D2BFA1F1E95FA7300F88A08 /* WalkthroughContentViewController.m */,
 				0D2BFA211E95FDD400F88A08 /* WalkthroughPageViewController.h */,
 				0D2BFA221E95FDD400F88A08 /* WalkthroughPageViewController.m */,
-				0DD98A8B1E7C15EF0030E698 /* Supporting Files */,
+				0D2BFA1E1E95FA7300F88A08 /* WalkthroughContentViewController.h */,
+				0D2BFA1F1E95FA7300F88A08 /* WalkthroughContentViewController.m */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";

@@ -19,13 +19,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 
 	// 加入模糊效果
 	UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
 	self.blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
 	[self.backgroundImageView addSubview:self.blurEffectView];
 
+	// 動畫
 	self.ratingStackView.transform = CGAffineTransformMakeScale(0.0, 0.0);
 
 	// 加入點擊手勢
@@ -90,15 +90,5 @@
 		[self performSegueWithIdentifier:@"unwindToDetailView" sender:gesture];
 	}
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
