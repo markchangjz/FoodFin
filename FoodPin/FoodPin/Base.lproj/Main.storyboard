@@ -258,6 +258,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Food Pin" id="i5h-e8-ZuM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="NPo-HP-8Nf">
+                            <connections>
+                                <action selector="refresh:" destination="uCD-1R-UXb" id="uRJ-It-1If"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="SqQ-Jf-XOd">
                             <connections>
                                 <segue destination="5AN-fF-TP6" kind="presentation" identifier="addRestaurant" id="yU6-Gz-1q5"/>

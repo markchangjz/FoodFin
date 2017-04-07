@@ -286,6 +286,12 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 	}
 }
 
+#pragma mark - IBAction
+
+- (IBAction)refresh:(UIBarButtonItem *)sender {
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"hasViewedWalkthrough"];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
