@@ -13,7 +13,7 @@
         <!--Walkthrough View Controller-->
         <scene sceneID="8Jo-ul-w9n">
             <objects>
-                <viewController storyboardIdentifier="WalkthroughViewController" id="lgu-HP-4j3" customClass="WalkthroughViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughViewController" modalTransitionStyle="crossDissolve" id="lgu-HP-4j3" customClass="WalkthroughViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UNy-ne-xZ0"/>
                         <viewControllerLayoutGuide type="bottom" id="Nii-7I-UQ0"/>
