@@ -60,6 +60,8 @@
 		default:
 			break;
 	}
+
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma Init variable
