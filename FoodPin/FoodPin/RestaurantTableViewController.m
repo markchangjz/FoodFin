@@ -19,15 +19,15 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 };
 
 @interface RestaurantTableViewController () <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate> {
-	NSMutableArray *restaurantNames;
-	NSMutableArray *restaurantImages;
-	NSMutableArray *restaurantLocations;
-	NSMutableArray *restaurantTypes;
-	NSMutableArray *restaurantIsVisited;
+	NSMutableArray<NSString *> *restaurantNames;
+	NSMutableArray<NSString *> *restaurantImages;
+	NSMutableArray<NSString *> *restaurantLocations;
+	NSMutableArray<NSString *> *restaurantTypes;
+	NSMutableArray<NSNumber *> *restaurantIsVisited;
 }
 
-@property (nonatomic) NSMutableArray *restaurants;
-@property (copy, nonatomic) NSArray *searchResults;
+@property (nonatomic) NSMutableArray<Restaurant *> *restaurants;
+@property (copy, nonatomic) NSArray<Restaurant *> *searchResults;
 @property (nonatomic) UISearchController *searchController;
 
 @end
