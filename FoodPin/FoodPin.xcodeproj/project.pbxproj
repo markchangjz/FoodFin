@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D1435EE1E988DA7006CE663 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1435ED1E988DA7006CE663 /* AboutTableViewController.m */; };
 		0D164A731E7D21AD007F077E /* RestaurantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D164A721E7D21AD007F077E /* RestaurantDetailViewController.m */; };
 		0D164A761E7D5D86007F077E /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D164A751E7D5D86007F077E /* Restaurant.m */; };
 		0D2BFA201E95FA7300F88A08 /* WalkthroughContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2BFA1F1E95FA7300F88A08 /* WalkthroughContentViewController.m */; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D1435EC1E988DA7006CE663 /* AboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTableViewController.h; sourceTree = "<group>"; };
+		0D1435ED1E988DA7006CE663 /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
 		0D164A711E7D21AD007F077E /* RestaurantDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantDetailViewController.h; sourceTree = "<group>"; };
 		0D164A721E7D21AD007F077E /* RestaurantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDetailViewController.m; sourceTree = "<group>"; };
 		0D164A741E7D5D86007F077E /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
@@ -144,6 +147,8 @@
 				0D9F85031E8A4072000DA3DA /* MapViewController.m */,
 				0DEF99F31E81277D004A87E3 /* ReviewViewController.h */,
 				0DEF99F41E81277D004A87E3 /* ReviewViewController.m */,
+				0D1435EC1E988DA7006CE663 /* AboutTableViewController.h */,
+				0D1435ED1E988DA7006CE663 /* AboutTableViewController.m */,
 				0DCA9DCC1E97389300635A97 /* WalkthroughView */,
 				0D2BFA211E95FDD400F88A08 /* WalkthroughPageViewController.h */,
 				0D2BFA221E95FDD400F88A08 /* WalkthroughPageViewController.m */,
@@ -255,6 +260,7 @@
 				0D2BFA201E95FA7300F88A08 /* WalkthroughContentViewController.m in Sources */,
 				0D2BFA231E95FDD400F88A08 /* WalkthroughPageViewController.m in Sources */,
 				0D2BFA291E962C1C00F88A08 /* WalkthroughViewController.m in Sources */,
+				0D1435EE1E988DA7006CE663 /* AboutTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
