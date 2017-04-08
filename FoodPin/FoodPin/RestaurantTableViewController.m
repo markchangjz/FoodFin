@@ -253,6 +253,7 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 	if ([segue.identifier isEqualToString:@"showRestaurantDetail"]) {
 		NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
 		RestaurantDetailViewController *destinationViewController = segue.destinationViewController;
+		destinationViewController.hidesBottomBarWhenPushed = YES; // 隱藏 Tab Bar
 		destinationViewController.restaurant = self.searchController.active ? self.searchResults[indexPath.row] : self.restaurants[indexPath.row];
 	}
 }
