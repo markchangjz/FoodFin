@@ -534,15 +534,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gCd-3H-Wcn">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gCd-3H-Wcn" firstAttribute="leading" secondItem="59g-9e-rd8" secondAttribute="leading" id="27y-8s-O7h"/>
-                            <constraint firstItem="iLj-Ux-7WO" firstAttribute="top" secondItem="gCd-3H-Wcn" secondAttribute="bottom" id="8sa-5J-LNt"/>
                             <constraint firstAttribute="trailing" secondItem="gCd-3H-Wcn" secondAttribute="trailing" id="Drj-3d-6hQ"/>
-                            <constraint firstItem="gCd-3H-Wcn" firstAttribute="top" secondItem="59g-9e-rd8" secondAttribute="top" id="M7H-d9-CMN"/>
+                            <constraint firstItem="iLj-Ux-7WO" firstAttribute="top" secondItem="gCd-3H-Wcn" secondAttribute="bottom" id="Su9-bl-Kcw"/>
+                            <constraint firstItem="gCd-3H-Wcn" firstAttribute="top" secondItem="UdK-vm-MMM" secondAttribute="bottom" id="jxH-34-wOK"/>
                         </constraints>
                     </view>
                     <connections>
@@ -551,7 +551,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xlW-lD-uPl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3457" y="774"/>
+            <point key="canvasLocation" x="3456.8000000000002" y="773.16341829085468"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="OEF-87-4QW">
@@ -677,6 +677,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="48f-9c-rRc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="tOr-ho-Obl">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
