@@ -7,6 +7,7 @@
 //
 
 #import "AboutTableViewController.h"
+#import <SafariServices/SafariServices.h>
 
 @interface AboutTableViewController ()
 
@@ -56,6 +57,13 @@
 			else if (indexPath.row == 1) {
 				[self performSegueWithIdentifier:@"showWebView" sender:self];
 			}
+			break;
+		case 1:
+		{
+			NSURL *url = [NSURL URLWithString:self.links[indexPath.row]];
+			SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url entersReaderIfAvailable:YES];
+			[self presentViewController:safariViewController animated:YES completion:nil];
+		}
 			break;
 		default:
 			break;
