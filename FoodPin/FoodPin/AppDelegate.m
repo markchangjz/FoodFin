@@ -25,6 +25,10 @@
 	UIFont *font = [UIFont fontWithName:@"Avenir-Light" size:24.0];
 	[UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: font};
 
+	// 設定 UITabBar 外觀
+	[UITabBar appearance].selectionIndicatorImage = [UIImage imageNamed:@"tabitem-selected"];
+	[UITabBar appearance].tintColor = [UIColor whiteColor];
+
 	// 設定狀態列顏色請參考：http://stackoverflow.com/questions/32501305/uiapplication-sharedapplication-setstatusbarstyle-deprecated-in-ios-9
 
 	return YES;
