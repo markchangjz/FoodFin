@@ -13,6 +13,7 @@
 #import "AddRestaurantTableViewController.h"
 #import "WalkthroughPageViewController.h"
 #import "WalkthroughViewController.h"
+#import "UIStatusBar.h"
 
 typedef NS_ENUM(NSUInteger, SearchScope) {
 	All, Name, Location
@@ -83,6 +84,12 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 	self.definesPresentationContext = YES; // 避免點選搜尋結過後，push 到下一頁 search bar 仍顯示
 
 	[self performSelector:@selector(showWalkthroughView) withObject:nil afterDelay:0.7];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+
+	[UIStatusBar appearance].backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark - Function
@@ -207,6 +214,14 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 }
 
 #pragma mark - UISearchBarDelegate
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+	[UIStatusBar appearance].backgroundColor = [UIColor blackColor];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+	[UIStatusBar appearance].backgroundColor = [UIColor clearColor];
+}
 
 // 切換 scope 類型
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {

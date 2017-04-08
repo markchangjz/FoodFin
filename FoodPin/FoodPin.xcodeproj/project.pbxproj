@@ -20,6 +20,7 @@
 		0D9F85041E8A4072000DA3DA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F85031E8A4072000DA3DA /* MapViewController.m */; };
 		0D9F85121E8CE3CC000DA3DA /* AddRestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F85111E8CE3CC000DA3DA /* AddRestaurantTableViewController.m */; };
 		0DAB491F1E9896C000CFF75C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAB491E1E9896C000CFF75C /* WebViewController.m */; };
+		0DAB49221E98C80A00CFF75C /* UIStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAB49211E98C80A00CFF75C /* UIStatusBar.m */; };
 		0DCA9DCB1E9733CA00635A97 /* Walkthrough.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DCA9DCA1E9733CA00635A97 /* Walkthrough.xcassets */; };
 		0DCA9DD21E973A2600635A97 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCA9DD11E973A2600635A97 /* Walkthrough.storyboard */; };
 		0DD98A8D1E7C15EF0030E698 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98A8C1E7C15EF0030E698 /* main.m */; };
@@ -56,6 +57,8 @@
 		0D9F85111E8CE3CC000DA3DA /* AddRestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRestaurantTableViewController.m; sourceTree = "<group>"; };
 		0DAB491D1E9896C000CFF75C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		0DAB491E1E9896C000CFF75C /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		0DAB49201E98C80A00CFF75C /* UIStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIStatusBar.h; sourceTree = "<group>"; };
+		0DAB49211E98C80A00CFF75C /* UIStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIStatusBar.m; sourceTree = "<group>"; };
 		0DCA9DCA1E9733CA00635A97 /* Walkthrough.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Walkthrough.xcassets; sourceTree = "<group>"; };
 		0DCA9DD11E973A2600635A97 /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
 		0DD98A881E7C15EF0030E698 /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +95,15 @@
 				0D9F85001E8A3884000DA3DA /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0DAB49281E98CD2A00CFF75C /* UIStatusBar */ = {
+			isa = PBXGroup;
+			children = (
+				0DAB49201E98C80A00CFF75C /* UIStatusBar.h */,
+				0DAB49211E98C80A00CFF75C /* UIStatusBar.m */,
+			);
+			name = UIStatusBar;
 			sourceTree = "<group>";
 		};
 		0DCA9DCC1E97389300635A97 /* WalkthroughView */ = {
@@ -159,6 +171,7 @@
 				0D2BFA221E95FDD400F88A08 /* WalkthroughPageViewController.m */,
 				0D2BFA1E1E95FA7300F88A08 /* WalkthroughContentViewController.h */,
 				0D2BFA1F1E95FA7300F88A08 /* WalkthroughContentViewController.m */,
+				0DAB49281E98CD2A00CFF75C /* UIStatusBar */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -267,6 +280,7 @@
 				0D2BFA231E95FDD400F88A08 /* WalkthroughPageViewController.m in Sources */,
 				0D2BFA291E962C1C00F88A08 /* WalkthroughViewController.m in Sources */,
 				0D1435EE1E988DA7006CE663 /* AboutTableViewController.m in Sources */,
+				0DAB49221E98C80A00CFF75C /* UIStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
