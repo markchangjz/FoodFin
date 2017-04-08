@@ -19,6 +19,7 @@
 		0D9F85011E8A3884000DA3DA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9F85001E8A3884000DA3DA /* MapKit.framework */; };
 		0D9F85041E8A4072000DA3DA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F85031E8A4072000DA3DA /* MapViewController.m */; };
 		0D9F85121E8CE3CC000DA3DA /* AddRestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F85111E8CE3CC000DA3DA /* AddRestaurantTableViewController.m */; };
+		0DAB491F1E9896C000CFF75C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAB491E1E9896C000CFF75C /* WebViewController.m */; };
 		0DCA9DCB1E9733CA00635A97 /* Walkthrough.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DCA9DCA1E9733CA00635A97 /* Walkthrough.xcassets */; };
 		0DCA9DD21E973A2600635A97 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCA9DD11E973A2600635A97 /* Walkthrough.storyboard */; };
 		0DD98A8D1E7C15EF0030E698 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98A8C1E7C15EF0030E698 /* main.m */; };
@@ -53,6 +54,8 @@
 		0D9F85031E8A4072000DA3DA /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		0D9F85101E8CE3CC000DA3DA /* AddRestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRestaurantTableViewController.h; sourceTree = "<group>"; };
 		0D9F85111E8CE3CC000DA3DA /* AddRestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRestaurantTableViewController.m; sourceTree = "<group>"; };
+		0DAB491D1E9896C000CFF75C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		0DAB491E1E9896C000CFF75C /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		0DCA9DCA1E9733CA00635A97 /* Walkthrough.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Walkthrough.xcassets; sourceTree = "<group>"; };
 		0DCA9DD11E973A2600635A97 /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
 		0DD98A881E7C15EF0030E698 /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +152,8 @@
 				0DEF99F41E81277D004A87E3 /* ReviewViewController.m */,
 				0D1435EC1E988DA7006CE663 /* AboutTableViewController.h */,
 				0D1435ED1E988DA7006CE663 /* AboutTableViewController.m */,
+				0DAB491D1E9896C000CFF75C /* WebViewController.h */,
+				0DAB491E1E9896C000CFF75C /* WebViewController.m */,
 				0DCA9DCC1E97389300635A97 /* WalkthroughView */,
 				0D2BFA211E95FDD400F88A08 /* WalkthroughPageViewController.h */,
 				0D2BFA221E95FDD400F88A08 /* WalkthroughPageViewController.m */,
@@ -248,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D9F85121E8CE3CC000DA3DA /* AddRestaurantTableViewController.m in Sources */,
+				0DAB491F1E9896C000CFF75C /* WebViewController.m in Sources */,
 				0DD98A901E7C15EF0030E698 /* AppDelegate.m in Sources */,
 				0DD98A8D1E7C15EF0030E698 /* main.m in Sources */,
 				0D9F85041E8A4072000DA3DA /* MapViewController.m in Sources */,

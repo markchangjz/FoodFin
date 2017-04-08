@@ -46,6 +46,22 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	switch (indexPath.section) {
+		case 0:
+			if (indexPath.row == 0) {
+				NSURL *url = [NSURL URLWithString:@"https://www.google.com"];
+				[[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+			}
+			else if (indexPath.row == 1) {
+				[self performSegueWithIdentifier:@"showWebView" sender:self];
+			}
+			break;
+		default:
+			break;
+	}
+}
+
 #pragma Init variable
 
 - (NSArray<NSString *> *)sectionTitles {
