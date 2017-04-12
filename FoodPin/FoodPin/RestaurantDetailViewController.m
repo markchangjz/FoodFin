@@ -10,8 +10,9 @@
 #import "RestaurantDetailTableViewCell.h"
 #import "ReviewViewController.h"
 #import "MapViewController.h"
+#import "RestaurantInfo.h"
 
-@interface RestaurantDetailViewController () <UITableViewDataSource, UITabBarDelegate>
+@interface RestaurantDetailViewController () <UITableViewDataSource, UITableViewDelegate, UITabBarDelegate>
 
 @end
 
@@ -74,6 +75,41 @@
 	}
 
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    if (indexPath.row == 0) {
+        RestaurantDetailTableViewCell *editCell = [tableView cellForRowAtIndexPath:indexPath];
+
+        UIAlertController *editAlertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Edit %@", editCell.fieldLabel.text] message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [editAlertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = editCell.fieldLabel.text;
+            textField.text = editCell.valueLabel.text;
+            textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        }];
+
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UITextField *editTextField = editAlertController.textFields.firstObject;
+            if (![editTextField.text isEqualToString:@""]) {
+                // 刷新 Restaurant Table View 的資料
+                NSInteger reloadCellIndex = [[RestaurantInfo sharedInstance].restaurants indexOfObject:self.restaurant];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"RestaurantHasBeenUpdated" object:[NSNumber numberWithInteger:reloadCellIndex]];
+
+                // 刷新 Restaurant Detail View 的資料
+                self.restaurant.name = editTextField.text;
+                self.title = editTextField.text;
+                [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            }
+        }];
+
+        [editAlertController addAction:cancelAction];
+        [editAlertController addAction:saveAction];
+        [self presentViewController:editAlertController animated:YES completion:nil];
+    }
+
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Unwind

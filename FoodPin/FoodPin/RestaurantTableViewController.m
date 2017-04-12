@@ -14,12 +14,14 @@
 #import "WalkthroughPageViewController.h"
 #import "WalkthroughViewController.h"
 #import "UIStatusBar.h"
+#import "RestaurantInfo.h"
+@import UserNotifications;
 
 typedef NS_ENUM(NSUInteger, SearchScope) {
 	All, Name, Location
 };
 
-@interface RestaurantTableViewController () <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate> {
+@interface RestaurantTableViewController () <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, WalkthroughDelegate> {
 	NSMutableArray<NSString *> *restaurantNames;
 	NSMutableArray<NSString *> *restaurantImages;
 	NSMutableArray<NSString *> *restaurantLocations;
@@ -55,6 +57,8 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 	for (int i = 0; i < restaurantNames.count; i++) {
 		[self.restaurants addObject:[[Restaurant alloc] initWithName:restaurantNames[i] type:restaurantTypes[i] location:restaurantLocations[i] rating:nil image:[UIImage imageNamed:restaurantImages[i]] isVisited:[restaurantIsVisited[i] boolValue]]];
 	}
+
+    [RestaurantInfo sharedInstance].restaurants = self.restaurants;
 }
 
 - (void)viewDidLoad {
@@ -84,12 +88,18 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 	self.definesPresentationContext = YES; // 避免點選搜尋結過後，push 到下一頁 search bar 仍顯示
 
 	[self performSelector:@selector(showWalkthroughView) withObject:nil afterDelay:0.7];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableView:) name:@"RestaurantHasBeenUpdated" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 
 	[UIStatusBar appearance].backgroundColor = [UIColor clearColor];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Function
@@ -127,7 +137,44 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 	// 顯示引導畫面 2
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Walkthrough" bundle:nil];
 	WalkthroughViewController *pageViewController = [storyboard instantiateViewControllerWithIdentifier:@"WalkthroughViewController"];
+    pageViewController.delegate = self;
 	[self presentViewController:pageViewController animated:YES completion:nil];
+}
+
+- (void)remindMeWithRestaurant:(Restaurant *)restaurant within:(NSTimeInterval)sec {
+    NSString *notificationIdentifier = @"FoodPinLocalNotification";
+    NSString *categoryIdentifier = @"FoodPinNotificationCategory";
+
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    content.title = [NSString stringWithFormat:@"%@ (%.0f sec)", restaurant.name, sec];
+    content.body = restaurant.location;
+    content.userInfo = @{@"restaurant_index": [NSNumber numberWithInteger:[self.restaurants indexOfObject:restaurant]]};
+    content.sound = [UNNotificationSound defaultSound];
+    content.categoryIdentifier = categoryIdentifier;
+
+    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:sec repeats:NO];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:notificationIdentifier content:content trigger:trigger];
+
+    UNNotificationAction *viewAction = [UNNotificationAction actionWithIdentifier:@"View" title:@"View" options:UNNotificationActionOptionNone];
+    UNNotificationAction *closeAction = [UNNotificationAction actionWithIdentifier:@"Close" title:@"Close" options:UNNotificationActionOptionDestructive];
+    UNNotificationCategory *category = [UNNotificationCategory categoryWithIdentifier:categoryIdentifier actions:@[viewAction, closeAction] intentIdentifiers:@[] options:UNNotificationCategoryOptionNone];
+    NSSet *categories = [NSSet setWithObject:category];
+
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    [center setNotificationCategories:categories];
+    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void)refreshTableView:(NSNotification *)notification {
+    NSIndexPath *reloadIndexPath = [NSIndexPath indexPathForRow:[notification.object integerValue] inSection:0];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadRowsAtIndexPaths:@[reloadIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    });
 }
 
 #pragma mark - Table View
@@ -185,9 +232,42 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 
 		[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 	}];
-	deleteAction.backgroundColor = [UIColor colorWithRed:202.0/255.0 green:202.0/255.0 blue:203.0/255.0 alpha:1.0];
+	deleteAction.backgroundColor = [UIColor grayColor];
+    
+    // 提醒
+    UITableViewRowAction *remindAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Remind" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+            if (settings.authorizationStatus != UNAuthorizationStatusAuthorized) {
+                // Notifications is not allowed
+                UIAlertController *notAuthorizeAlert = [UIAlertController alertControllerWithTitle:@"Notifications is not allowed" message:@"Please allow notifications in settings" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+                [notAuthorizeAlert addAction:cancelAction];
+                [self presentViewController:notAuthorizeAlert animated:YES completion:nil];
+            }
+            else {
+                UIAlertController *remindActionSheet = [UIAlertController alertControllerWithTitle:@"Remind me within" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+                UIAlertAction *threeSecAction = [UIAlertAction actionWithTitle:@"3 sec" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self remindMeWithRestaurant:self.restaurants[indexPath.row] within:3];
+                }];
+                UIAlertAction *fiveSecAction = [UIAlertAction actionWithTitle:@"5 sec" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self remindMeWithRestaurant:self.restaurants[indexPath.row] within:5];
+                }];
+                UIAlertAction *tenSecAction = [UIAlertAction actionWithTitle:@"10 sec" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self remindMeWithRestaurant:self.restaurants[indexPath.row] within:10];
+                }];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+                [remindActionSheet addAction:threeSecAction];
+                [remindActionSheet addAction:fiveSecAction];
+                [remindActionSheet addAction:tenSecAction];
+                [remindActionSheet addAction:cancelAction];
+                [self presentViewController:remindActionSheet animated:YES completion:nil];
+            }
+        }];
+    }];
+    remindAction.backgroundColor = [UIColor orangeColor];
 
-	return @[deleteAction, shareAction];
+	return @[deleteAction, remindAction, shareAction];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -260,6 +340,15 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 
 - (IBAction)refresh:(UIBarButtonItem *)sender {
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"hasViewedWalkthrough"];
+    [self showWalkthroughView];
+}
+
+#pragma mark - WalkthroughDelegate
+
+- (void)dismissWalkthroughView:(WalkthroughViewController *)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasViewedWalkthrough"];
+    }];
 }
 
 #pragma mark - Navigation

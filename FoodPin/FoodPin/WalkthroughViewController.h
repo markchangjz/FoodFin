@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class WalkthroughViewController;
+
+@protocol WalkthroughDelegate <NSObject>
+
+- (void)dismissWalkthroughView:(WalkthroughViewController *)sender;
+
+@end
+
 @interface WalkthroughViewController : UIViewController
 
+@property (weak, nonatomic) id <WalkthroughDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 

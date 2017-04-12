@@ -96,9 +96,11 @@
 		[self forward:self.pageControl.currentPage];
 	}
 	else {
-		[self dismissViewControllerAnimated:YES completion:^{
-			[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasViewedWalkthrough"];
-		}];
+//		[self dismissViewControllerAnimated:YES completion:^{
+//			[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasViewedWalkthrough"];
+//		}];
+
+        [self.delegate dismissWalkthroughView:self];
 	}
 
 	[self handelNextButtonTitle];

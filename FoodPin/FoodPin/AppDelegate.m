@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "AppDelegate+UserNotifications.h"
+#import "AppDelegate+HandleOpenURL.h"
 
 @interface AppDelegate ()
 
@@ -30,6 +32,9 @@
 	[UITabBar appearance].tintColor = [UIColor whiteColor];
 
 	// 設定狀態列顏色請參考：http://stackoverflow.com/questions/32501305/uiapplication-sharedapplication-setstatusbarstyle-deprecated-in-ios-9
+
+    // Local Notifications https://useyourloaf.com/blog/local-notifications-with-ios-10/
+    [self registerUserNotifications];
 
 	return YES;
 }

@@ -31,6 +31,10 @@
 		0DD98AA41E7C17800030E698 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98AA31E7C17800030E698 /* RestaurantTableViewController.m */; };
 		0DE32E741E7C1F9400F99BF6 /* RestaurantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE32E731E7C1F9400F99BF6 /* RestaurantTableViewCell.m */; };
 		0DEF99F51E81277D004A87E3 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF99F41E81277D004A87E3 /* ReviewViewController.m */; };
+		93CC97431E9DC24D0050BA5B /* RestaurantInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CC97421E9DC24D0050BA5B /* RestaurantInfo.m */; };
+		93D268131E9C827200B0470B /* FoodPinNotificationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D268121E9C827200B0470B /* FoodPinNotificationDelegate.m */; };
+		93D268191E9C855800B0470B /* AppDelegate+UserNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D268181E9C855800B0470B /* AppDelegate+UserNotifications.m */; };
+		93D2681C1E9CADBF00B0470B /* AppDelegate+HandleOpenURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D2681B1E9CADBF00B0470B /* AppDelegate+HandleOpenURL.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +79,14 @@
 		0DE32E731E7C1F9400F99BF6 /* RestaurantTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewCell.m; sourceTree = "<group>"; };
 		0DEF99F31E81277D004A87E3 /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
 		0DEF99F41E81277D004A87E3 /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
+		93CC97411E9DC24D0050BA5B /* RestaurantInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantInfo.h; sourceTree = "<group>"; };
+		93CC97421E9DC24D0050BA5B /* RestaurantInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantInfo.m; sourceTree = "<group>"; };
+		93D268111E9C827200B0470B /* FoodPinNotificationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodPinNotificationDelegate.h; sourceTree = "<group>"; };
+		93D268121E9C827200B0470B /* FoodPinNotificationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodPinNotificationDelegate.m; sourceTree = "<group>"; };
+		93D268171E9C855800B0470B /* AppDelegate+UserNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+UserNotifications.h"; sourceTree = "<group>"; };
+		93D268181E9C855800B0470B /* AppDelegate+UserNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+UserNotifications.m"; sourceTree = "<group>"; };
+		93D2681A1E9CADBF00B0470B /* AppDelegate+HandleOpenURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+HandleOpenURL.h"; sourceTree = "<group>"; };
+		93D2681B1E9CADBF00B0470B /* AppDelegate+HandleOpenURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+HandleOpenURL.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +124,10 @@
 				0DCA9DD11E973A2600635A97 /* Walkthrough.storyboard */,
 				0D2BFA271E962C1C00F88A08 /* WalkthroughViewController.h */,
 				0D2BFA281E962C1C00F88A08 /* WalkthroughViewController.m */,
+				0D2BFA211E95FDD400F88A08 /* WalkthroughPageViewController.h */,
+				0D2BFA221E95FDD400F88A08 /* WalkthroughPageViewController.m */,
+				0D2BFA1E1E95FA7300F88A08 /* WalkthroughContentViewController.h */,
+				0D2BFA1F1E95FA7300F88A08 /* WalkthroughContentViewController.m */,
 			);
 			name = WalkthroughView;
 			sourceTree = "<group>";
@@ -139,15 +155,17 @@
 				0DD98A8B1E7C15EF0030E698 /* Supporting Files */,
 				0DD98A8E1E7C15EF0030E698 /* AppDelegate.h */,
 				0DD98A8F1E7C15EF0030E698 /* AppDelegate.m */,
+				93D268171E9C855800B0470B /* AppDelegate+UserNotifications.h */,
+				93D268181E9C855800B0470B /* AppDelegate+UserNotifications.m */,
+				93D2681A1E9CADBF00B0470B /* AppDelegate+HandleOpenURL.h */,
+				93D2681B1E9CADBF00B0470B /* AppDelegate+HandleOpenURL.m */,
 				0DD98A941E7C15F00030E698 /* Main.storyboard */,
 				0D9302211E987EB200D1F203 /* about.storyboard */,
 				0DD98A991E7C15F00030E698 /* LaunchScreen.storyboard */,
 				0DD98A9C1E7C15F00030E698 /* Info.plist */,
-				0DD98A971E7C15F00030E698 /* Assets.xcassets */,
-				0DCA9DCA1E9733CA00635A97 /* Walkthrough.xcassets */,
-				0D93021F1E987B6900D1F203 /* TabBar.xcassets */,
-				0D164A741E7D5D86007F077E /* Restaurant.h */,
-				0D164A751E7D5D86007F077E /* Restaurant.m */,
+				93CC97461E9DCB2C0050BA5B /* Images */,
+				93CC97451E9DCB090050BA5B /* Delegate */,
+				93CC97441E9DC33C0050BA5B /* Model */,
 				0DD98AA21E7C17800030E698 /* RestaurantTableViewController.h */,
 				0DD98AA31E7C17800030E698 /* RestaurantTableViewController.m */,
 				0DE32E721E7C1F9400F99BF6 /* RestaurantTableViewCell.h */,
@@ -167,10 +185,6 @@
 				0DAB491D1E9896C000CFF75C /* WebViewController.h */,
 				0DAB491E1E9896C000CFF75C /* WebViewController.m */,
 				0DCA9DCC1E97389300635A97 /* WalkthroughView */,
-				0D2BFA211E95FDD400F88A08 /* WalkthroughPageViewController.h */,
-				0D2BFA221E95FDD400F88A08 /* WalkthroughPageViewController.m */,
-				0D2BFA1E1E95FA7300F88A08 /* WalkthroughContentViewController.h */,
-				0D2BFA1F1E95FA7300F88A08 /* WalkthroughContentViewController.m */,
 				0DAB49281E98CD2A00CFF75C /* UIStatusBar */,
 			);
 			path = FoodPin;
@@ -182,6 +196,36 @@
 				0DD98A8C1E7C15EF0030E698 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		93CC97441E9DC33C0050BA5B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0D164A741E7D5D86007F077E /* Restaurant.h */,
+				0D164A751E7D5D86007F077E /* Restaurant.m */,
+				93CC97411E9DC24D0050BA5B /* RestaurantInfo.h */,
+				93CC97421E9DC24D0050BA5B /* RestaurantInfo.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		93CC97451E9DCB090050BA5B /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				93D268111E9C827200B0470B /* FoodPinNotificationDelegate.h */,
+				93D268121E9C827200B0470B /* FoodPinNotificationDelegate.m */,
+			);
+			name = Delegate;
+			sourceTree = "<group>";
+		};
+		93CC97461E9DCB2C0050BA5B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0DD98A971E7C15F00030E698 /* Assets.xcassets */,
+				0DCA9DCA1E9733CA00635A97 /* Walkthrough.xcassets */,
+				0D93021F1E987B6900D1F203 /* TabBar.xcassets */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,12 +314,16 @@
 				0DD98A901E7C15EF0030E698 /* AppDelegate.m in Sources */,
 				0DD98A8D1E7C15EF0030E698 /* main.m in Sources */,
 				0D9F85041E8A4072000DA3DA /* MapViewController.m in Sources */,
+				93D2681C1E9CADBF00B0470B /* AppDelegate+HandleOpenURL.m in Sources */,
 				0D164A761E7D5D86007F077E /* Restaurant.m in Sources */,
 				0D5FD4881E7D70D0004BC128 /* RestaurantDetailTableViewCell.m in Sources */,
+				93CC97431E9DC24D0050BA5B /* RestaurantInfo.m in Sources */,
 				0D164A731E7D21AD007F077E /* RestaurantDetailViewController.m in Sources */,
+				93D268191E9C855800B0470B /* AppDelegate+UserNotifications.m in Sources */,
 				0DE32E741E7C1F9400F99BF6 /* RestaurantTableViewCell.m in Sources */,
 				0DD98AA41E7C17800030E698 /* RestaurantTableViewController.m in Sources */,
 				0DEF99F51E81277D004A87E3 /* ReviewViewController.m in Sources */,
+				93D268131E9C827200B0470B /* FoodPinNotificationDelegate.m in Sources */,
 				0D2BFA201E95FA7300F88A08 /* WalkthroughContentViewController.m in Sources */,
 				0D2BFA231E95FDD400F88A08 /* WalkthroughPageViewController.m in Sources */,
 				0D2BFA291E962C1C00F88A08 /* WalkthroughViewController.m in Sources */,
@@ -410,8 +458,9 @@
 				DEVELOPMENT_TEAM = Y53W55T72H;
 				INFOPLIST_FILE = FoodPin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "tw.com.markchang.FoodPin-objc";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.com.markchang.FoodPin-objc2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -423,8 +472,9 @@
 				DEVELOPMENT_TEAM = Y53W55T72H;
 				INFOPLIST_FILE = FoodPin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "tw.com.markchang.FoodPin-objc";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.com.markchang.FoodPin-objc2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
