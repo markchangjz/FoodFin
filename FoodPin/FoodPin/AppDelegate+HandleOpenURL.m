@@ -23,6 +23,13 @@
         RestaurantDetailViewController *restaurantDetailViewController = [storyboard instantiateViewControllerWithIdentifier:@"RestaurantDetailViewController"];
         restaurantDetailViewController.restaurant = [RestaurantInfo sharedInstance].restaurants[restaurantIndex];
 
+        // 關閉所有 Alert
+        UIViewController *topMostViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+        while ([topMostViewController.presentedViewController isKindOfClass:[UIAlertController class]]) {
+            [topMostViewController dismissViewControllerAnimated:NO completion:nil];
+            topMostViewController = topMostViewController.presentedViewController;
+        }
+
         // 顯示 Restaurant Detail View
         UITabBarController *rootViewController = (UITabBarController *)UIApplication.sharedApplication.keyWindow.rootViewController;
         rootViewController.selectedIndex = 0; // 切到第一個 Tab

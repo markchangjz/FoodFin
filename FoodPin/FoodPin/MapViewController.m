@@ -29,7 +29,7 @@
 	CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
 	[geoCoder geocodeAddressString:self.restaurant.location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
 		if (error != nil) {
-			NSLog(@"%@", error.localizedDescription);
+			NSLog(@"Error: %@", error.localizedDescription);
 			return;
 		}
 

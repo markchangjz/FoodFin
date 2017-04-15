@@ -52,7 +52,12 @@
 		case 0:
 			if (indexPath.row == 0) {
 				NSURL *url = [NSURL URLWithString:@"https://www.google.com"];
-				[[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+                if ([[NSProcessInfo processInfo] operatingSystemVersion].majorVersion >= 10) {
+                    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+                }
+                else {
+                    [[UIApplication sharedApplication] openURL:url];
+                }
 			}
 			else if (indexPath.row == 1) {
 				[self performSegueWithIdentifier:@"showWebView" sender:self];

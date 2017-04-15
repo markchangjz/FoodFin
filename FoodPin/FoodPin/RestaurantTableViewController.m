@@ -141,32 +141,78 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 	[self presentViewController:pageViewController animated:YES completion:nil];
 }
 
+- (void)showRemindActionSheetWithRestaurantIndex:(NSInteger)index {
+    UIAlertController *remindActionSheet = [UIAlertController alertControllerWithTitle:@"Remind me within" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *oneSecAction = [UIAlertAction actionWithTitle:@"1 sec" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self remindMeWithRestaurant:self.restaurants[index] within:1];
+    }];
+    UIAlertAction *threeSecAction = [UIAlertAction actionWithTitle:@"3 sec" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self remindMeWithRestaurant:self.restaurants[index] within:3];
+    }];
+    UIAlertAction *fiveSecAction = [UIAlertAction actionWithTitle:@"5 sec" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self remindMeWithRestaurant:self.restaurants[index] within:5];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    [remindActionSheet addAction:oneSecAction];
+    [remindActionSheet addAction:threeSecAction];
+    [remindActionSheet addAction:fiveSecAction];
+    [remindActionSheet addAction:cancelAction];
+    [self presentViewController:remindActionSheet animated:YES completion:nil];
+}
+
 - (void)remindMeWithRestaurant:(Restaurant *)restaurant within:(NSTimeInterval)sec {
     NSString *notificationIdentifier = @"FoodPinLocalNotification";
     NSString *categoryIdentifier = @"FoodPinNotificationCategory";
 
-    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-    content.title = [NSString stringWithFormat:@"%@ (%.0f sec)", restaurant.name, sec];
-    content.body = restaurant.location;
-    content.userInfo = @{@"restaurant_index": [NSNumber numberWithInteger:[self.restaurants indexOfObject:restaurant]]};
-    content.sound = [UNNotificationSound defaultSound];
-    content.categoryIdentifier = categoryIdentifier;
+    if ([[NSProcessInfo processInfo] operatingSystemVersion].majorVersion >= 10) {
+        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+        content.title = [NSString stringWithFormat:@"%@ (%.0f sec)", restaurant.name, sec];
+        content.body = restaurant.location;
+        content.userInfo = @{@"restaurant_index": [NSNumber numberWithInteger:[self.restaurants indexOfObject:restaurant]]};
+        content.sound = [UNNotificationSound defaultSound];
+        content.categoryIdentifier = categoryIdentifier;
 
-    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:sec repeats:NO];
-    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:notificationIdentifier content:content trigger:trigger];
+        UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:sec repeats:NO];
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:notificationIdentifier content:content trigger:trigger];
 
-    UNNotificationAction *viewAction = [UNNotificationAction actionWithIdentifier:@"View" title:@"View" options:UNNotificationActionOptionNone];
-    UNNotificationAction *closeAction = [UNNotificationAction actionWithIdentifier:@"Close" title:@"Close" options:UNNotificationActionOptionDestructive];
-    UNNotificationCategory *category = [UNNotificationCategory categoryWithIdentifier:categoryIdentifier actions:@[viewAction, closeAction] intentIdentifiers:@[] options:UNNotificationCategoryOptionNone];
-    NSSet *categories = [NSSet setWithObject:category];
+        UNNotificationAction *viewAction = [UNNotificationAction actionWithIdentifier:@"View" title:@"View" options:UNNotificationActionOptionNone];
+        UNNotificationAction *closeAction = [UNNotificationAction actionWithIdentifier:@"Close" title:@"Close" options:UNNotificationActionOptionDestructive];
+        UNNotificationCategory *category = [UNNotificationCategory categoryWithIdentifier:categoryIdentifier actions:@[viewAction, closeAction] intentIdentifiers:@[] options:UNNotificationCategoryOptionNone];
+        NSSet *categories = [NSSet setWithObject:category];
 
-    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    [center setNotificationCategories:categories];
-    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-        if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
-        }
-    }];
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        [center setNotificationCategories:categories];
+        [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            if (error != nil) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            }
+        }];
+    }
+    else {
+        NSString *(^restaurantInfoString)(NSString *name, NSString *location) = ^(NSString *name, NSString *location) {
+            return [NSString stringWithFormat:@"%@ @ %@", name, location];
+        };
+        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+        localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:sec];
+        localNotification.timeZone = [NSTimeZone defaultTimeZone];
+        localNotification.repeatInterval = 0;
+        localNotification.alertBody = restaurantInfoString(restaurant.name, restaurant.location);
+        localNotification.userInfo = @{@"restaurant_index": [NSNumber numberWithInteger:[self.restaurants indexOfObject:restaurant]], @"name": restaurant.name, @"location": restaurant.location};
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    }
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+
+	// For testing
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.repeatInterval = 0;
+    localNotification.alertBody = @"Test";
+    localNotification.userInfo = @{@"restaurant_index": [NSNumber numberWithInteger:1], @"name": @"Name", @"location": @"Location"};
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
 - (void)refreshTableView:(NSNotification *)notification {
@@ -236,34 +282,25 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
     
     // 提醒
     UITableViewRowAction *remindAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Remind" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
-            if (settings.authorizationStatus != UNAuthorizationStatusAuthorized) {
-                // Notifications is not allowed
-                UIAlertController *notAuthorizeAlert = [UIAlertController alertControllerWithTitle:@"Notifications is not allowed" message:@"Please allow notifications in settings" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-                [notAuthorizeAlert addAction:cancelAction];
-                [self presentViewController:notAuthorizeAlert animated:YES completion:nil];
-            }
-            else {
-                UIAlertController *remindActionSheet = [UIAlertController alertControllerWithTitle:@"Remind me within" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-                UIAlertAction *threeSecAction = [UIAlertAction actionWithTitle:@"3 sec" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [self remindMeWithRestaurant:self.restaurants[indexPath.row] within:3];
-                }];
-                UIAlertAction *fiveSecAction = [UIAlertAction actionWithTitle:@"5 sec" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [self remindMeWithRestaurant:self.restaurants[indexPath.row] within:5];
-                }];
-                UIAlertAction *tenSecAction = [UIAlertAction actionWithTitle:@"10 sec" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [self remindMeWithRestaurant:self.restaurants[indexPath.row] within:10];
-                }];
-                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-                [remindActionSheet addAction:threeSecAction];
-                [remindActionSheet addAction:fiveSecAction];
-                [remindActionSheet addAction:tenSecAction];
-                [remindActionSheet addAction:cancelAction];
-                [self presentViewController:remindActionSheet animated:YES completion:nil];
-            }
-        }];
+
+        if ([[NSProcessInfo processInfo] operatingSystemVersion].majorVersion >= 10) {
+            UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+            [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+                if (settings.authorizationStatus != UNAuthorizationStatusAuthorized) {
+                    // Notifications is not allowed
+                    UIAlertController *notAuthorizeAlert = [UIAlertController alertControllerWithTitle:@"Notifications is not allowed" message:@"Please allow notifications in settings" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+                    [notAuthorizeAlert addAction:cancelAction];
+                    [self presentViewController:notAuthorizeAlert animated:YES completion:nil];
+                }
+                else {
+                    [self showRemindActionSheetWithRestaurantIndex:indexPath.row];
+                }
+            }];
+        }
+        else {
+            [self showRemindActionSheetWithRestaurantIndex:indexPath.row];
+        }
     }];
     remindAction.backgroundColor = [UIColor orangeColor];
 
