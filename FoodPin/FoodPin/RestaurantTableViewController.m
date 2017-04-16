@@ -161,16 +161,24 @@ typedef NS_ENUM(NSUInteger, SearchScope) {
 }
 
 - (void)remindMeWithRestaurant:(Restaurant *)restaurant within:(NSTimeInterval)sec {
-    NSString *notificationIdentifier = @"FoodPinLocalNotification";
-    NSString *categoryIdentifier = @"FoodPinNotificationCategory";
 
     if ([[NSProcessInfo processInfo] operatingSystemVersion].majorVersion >= 10) {
+        NSString *notificationIdentifier = @"FoodPinLocalNotification";
+        NSString *categoryIdentifier = @"FoodPinNotificationCategory";
+        NSString *attachmentIdentifier = @"FoodPinNotificationAttachment";
+
         UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
         content.title = [NSString stringWithFormat:@"%@ (%.0f sec)", restaurant.name, sec];
         content.body = restaurant.location;
         content.userInfo = @{@"restaurant_index": [NSNumber numberWithInteger:[self.restaurants indexOfObject:restaurant]]};
         content.sound = [UNNotificationSound defaultSound];
         content.categoryIdentifier = categoryIdentifier;
+
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *imageFilePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"image.png"];
+        [UIImagePNGRepresentation(restaurant.image) writeToFile:imageFilePath atomically:YES];
+        UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:attachmentIdentifier URL:[NSURL fileURLWithPath:imageFilePath] options:nil error:nil];
+        content.attachments = @[attachment];
 
         UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:sec repeats:NO];
         UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:notificationIdentifier content:content trigger:trigger];
